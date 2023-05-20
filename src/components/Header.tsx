@@ -7,7 +7,7 @@ export default function Header({ currentUser }: any) {
   const router = useRouter()
 
   return (
-    <nav className="flex justify-between border-b-2 border-white p-5">
+    <nav className="flex  justify-between border-b-2 border-gray-400 border-opacity-50 p-5">
       <ul className="flex gap-5">
         <li>Home</li>
         <li>Settings</li>
@@ -18,7 +18,7 @@ export default function Header({ currentUser }: any) {
         {currentUser ? (
           <img
             onClick={() => signOut()}
-            src={currentUser.user.image}
+            src={currentUser.image}
             alt="asdasd"
             className="rounded-full w-9 h-9 cursor-pointer"
           />

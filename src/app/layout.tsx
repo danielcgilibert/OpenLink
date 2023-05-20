@@ -2,7 +2,6 @@ import Header from '@/components/Header'
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
 import getCurrentUser from '@/actions/getUser'
-import { SessionProvider } from 'next-auth/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,10 +19,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`h-screen w-full  ${inter.className}`}>
         <Header currentUser={currentUser} />
-
-        {children}
+        <main className="max-w-7xl mx-auto">{children}</main>
       </body>
     </html>
   )

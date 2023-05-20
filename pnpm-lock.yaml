@@ -19,15 +19,15 @@ dependencies:
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.23)
+  dotenv-cli:
+    specifier: ^7.2.1
+    version: 7.2.1
   eslint:
     specifier: 8.40.0
     version: 8.40.0
   eslint-config-next:
     specifier: 13.4.2
     version: 13.4.2(eslint@8.40.0)(typescript@5.0.4)
-  jose:
-    specifier: ^4.14.4
-    version: 4.14.4
   next:
     specifier: 13.4.2
     version: 13.4.2(react-dom@18.2.0)(react@18.2.0)
@@ -836,6 +836,26 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: false
+
+  /dotenv-cli@7.2.1:
+    resolution: {integrity: sha512-ODHbGTskqRtXAzZapDPvgNuDVQApu4oKX8lZW7Y0+9hKA6le1ZJlyRS687oU9FXjOVEDU/VFV6zI125HzhM1UQ==}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+      dotenv: 16.0.3
+      dotenv-expand: 10.0.0
+      minimist: 1.2.8
+    dev: false
+
+  /dotenv-expand@10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /dotenv@16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /electron-to-chromium@1.4.394:

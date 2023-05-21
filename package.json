@@ -11,6 +11,7 @@
     "studio": "dotenv -e .env.development -- npx prisma studio"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.14",
     "@next-auth/prisma-adapter": "^1.0.6",
     "@prisma/client": "^4.14.0",
     "@types/node": "20.1.4",

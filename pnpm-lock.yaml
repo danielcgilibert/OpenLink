@@ -10,6 +10,9 @@ dependencies:
   '@prisma/client':
     specifier: ^4.14.0
     version: 4.14.0(prisma@4.14.0)
+  '@react-spring/web':
+    specifier: ^9.7.2
+    version: 9.7.2(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
     specifier: 20.1.4
     version: 20.1.4
@@ -334,6 +337,60 @@ packages:
   /@prisma/engines@4.14.0:
     resolution: {integrity: sha512-PDNlhP/1vyTgmNyiucGqGCdXIp7HIkkvKO50si3y3PcceeHvqtiKPaH1iJdz63jCWMVMbj2MElSxXPOeBvEVIQ==}
     requiresBuild: true
+
+  /@react-spring/animated@9.7.2(react@18.2.0):
+    resolution: {integrity: sha512-ipvleJ99ipqlnHkz5qhSsgf/ny5aW0ZG8Q+/2Oj9cI7LCc7COdnrSO6V/v8MAX3JOoQNzfz6dye2s5Pt5jGaIA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@react-spring/shared': 9.7.2(react@18.2.0)
+      '@react-spring/types': 9.7.2
+      react: 18.2.0
+    dev: false
+
+  /@react-spring/core@9.7.2(react@18.2.0):
+    resolution: {integrity: sha512-fF512edZT/gKVCA90ZRxfw1DmELeVwiL4OC2J6bMUlNr707C0h4QRoec6DjzG27uLX2MvS1CEatf9KRjwZR9/w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@react-spring/animated': 9.7.2(react@18.2.0)
+      '@react-spring/rafz': 9.7.2
+      '@react-spring/shared': 9.7.2(react@18.2.0)
+      '@react-spring/types': 9.7.2
+      react: 18.2.0
+    dev: false
+
+  /@react-spring/rafz@9.7.2:
+    resolution: {integrity: sha512-kDWMYDQto3+flkrX3vy6DU/l9pxQ4TVW91DglQEc11iDc7shF4+WVDRJvOVLX+xoMP7zyag1dMvlIgvQ+dvA/A==}
+    dev: false
+
+  /@react-spring/shared@9.7.2(react@18.2.0):
+    resolution: {integrity: sha512-6U9qkno+9DxlH5nSltnPs+kU6tYKf0bPLURX2te13aGel8YqgcpFYp5Av8DcN2x3sukinAsmzHUS/FRsdZMMBA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@react-spring/rafz': 9.7.2
+      '@react-spring/types': 9.7.2
+      react: 18.2.0
+    dev: false
+
+  /@react-spring/types@9.7.2:
+    resolution: {integrity: sha512-GEflx2Ex/TKVMHq5g5MxQDNNPNhqg+4Db9m7+vGTm8ttZiyga7YQUF24shgRNebKIjahqCuei16SZga8h1pe4g==}
+    dev: false
+
+  /@react-spring/web@9.7.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-7qNc7/5KShu2D05x7o2Ols2nUE7mCKfKLaY2Ix70xPMfTle1sZisoQMBFgV9w/fSLZlHZHV9P0uWJqEXQnbV4Q==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@react-spring/animated': 9.7.2(react@18.2.0)
+      '@react-spring/core': 9.7.2(react@18.2.0)
+      '@react-spring/shared': 9.7.2(react@18.2.0)
+      '@react-spring/types': 9.7.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@rushstack/eslint-patch@1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}

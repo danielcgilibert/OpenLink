@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { CloseIcon, FormIcon, LinkIcon } from './Icons'
+import { FadeIn } from '@/app/animations/FadeIn'
 
 export default function FormAddLink() {
   const [showForm, setShowForm] = useState(true)

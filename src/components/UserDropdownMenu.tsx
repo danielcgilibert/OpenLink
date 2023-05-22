@@ -1,4 +1,5 @@
 'use client'
+import { FadeIn } from '@/app/animations/FadeIn'
 import { signOut } from 'next-auth/react'
 import { useState } from 'react'
 
@@ -8,7 +9,6 @@ export default function UserDropdownMenu({ currentUser }: any) {
     <div className="relative">
       <button
         onClick={() => setOpenMenu(!openMenu)}
-        onBlur={() => setOpenMenu(false)}
         type="button"
         className="flex  text-sm  rounded-full md:mr-0 focus:ring-4 focus:ring-gray-200 "
         id="user-menu-button"
@@ -25,7 +25,7 @@ export default function UserDropdownMenu({ currentUser }: any) {
       </button>
 
       {openMenu && (
-        <div
+        <FadeIn
           className="absolute z-10 visible my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
           id="user-dropdown">
           <div className="px-4 py-3">
@@ -43,7 +43,7 @@ export default function UserDropdownMenu({ currentUser }: any) {
               Sign out
             </button>
           </ul>
-        </div>
+        </FadeIn>
       )}
     </div>
   )

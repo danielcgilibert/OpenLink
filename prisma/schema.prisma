@@ -64,7 +64,7 @@ model Link {
   descriptionShow Boolean @default(false)
   url         String
   bio    Bio @relation(fields: [bioId], references: [id])
-  bioId  Int @unique
+  bioId  Int 
 }
 
 

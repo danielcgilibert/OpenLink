@@ -1,7 +1,6 @@
 import Header from '@/components/Header'
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
-import getCurrentUser from '@/actions/getUser'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,13 +14,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const currentUser = await getCurrentUser()
-
   return (
     <html lang="en">
-      <body className={`h-screen w-full  ${inter.className}`}>
-        <Header currentUser={currentUser} />
-        <main className="max-w-7xl mx-auto">{children}</main>
+      <body className={` bg-[#f3f3f1] h-screen w-full  ${inter.className}`}>
+        <main className="relative mt-3  max-w-5xl mx-auto h-full">
+          {children}
+        </main>
       </body>
     </html>
   )

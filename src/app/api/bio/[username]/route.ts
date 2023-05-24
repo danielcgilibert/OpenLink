@@ -18,7 +18,6 @@ export async function GET(
 
     const { username } = params
 
-    console.log('params', username)
     const bio = await prisma.bio.findUnique({
       where: {
         username: username,

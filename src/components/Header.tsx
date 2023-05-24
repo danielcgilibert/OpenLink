@@ -1,15 +1,17 @@
 'use client'
 import React from 'react'
-import { signIn, signOut, useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import UserDropdownMenu from './UserDropdownMenu'
+import { User } from 'next-auth'
 
-export default function Header({ currentUser }: any) {
-  const router = useRouter()
-
+export default function Header({
+  currentUser,
+}: {
+  currentUser: User | null | undefined
+}) {
   return (
-    <nav className=" rounded-full top-0  sticky w-full  left-0 h-16 shadow flex justify-between items-center  bg-white  p-5 ">
+    <nav className="md:rounded-full md:mt-5 top-0 sticky w-full  left-0 h-16 shadow flex justify-between items-center  bg-white  p-5 ">
       <ul className="flex gap-5">
         <Link
           className="hover:bg-gray-100 px-2 py-1 rounded"

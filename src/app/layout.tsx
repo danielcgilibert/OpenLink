@@ -1,3 +1,4 @@
+import QueryProvider from '@/providers/QueryProvider'
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
 
@@ -15,10 +16,12 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`relative bg-[#f3f3f1] h-screen w-full   ${inter.className}`}>
-        <main className="max-w-5xl mx-auto h-full">{children}</main>
-      </body>
+      <QueryProvider>
+        <body
+          className={`relative bg-[#f3f3f1] h-screen w-full   ${inter.className}`}>
+          <main className="max-w-5xl mx-auto h-full">{children}</main>
+        </body>
+      </QueryProvider>
     </html>
   )
 }

@@ -30,7 +30,7 @@ export async function POST(request: Request) {
   }
   const newTitle = newUrl.split('://')[1].toString().split('.')[0] //TODO: Refactor this
 
-  await prisma.link.create({
+  const newLink = await prisma.link.create({
     data: {
       url: newUrl,
       icon: '',
@@ -44,5 +44,6 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     ok: true,
+    link: newLink,
   })
 }

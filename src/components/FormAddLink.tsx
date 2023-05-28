@@ -1,14 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { CloseIcon, FormIcon, LinkIcon } from './Icons'
-import { FadeIn } from '@/animations/FadeIn'
 import { Transition } from '@/animations/Transition'
+import { Link } from '@prisma/client'
 
 interface FormAddLinkProps {
   setIsEditing: (isEditing: boolean) => void
+  setListLinks: Dispatch<SetStateAction<Link[] | null | undefined>>
 }
-export default function FormAddLink({ setIsEditing }: FormAddLinkProps) {
+export default function FormAddLink({
+  setIsEditing,
+  setListLinks,
+}: FormAddLinkProps) {
   const [showForm, setShowForm] = useState(false)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,10 +29,24 @@ export default function FormAddLink({ setIsEditing }: FormAddLinkProps) {
         url: inputUrlValue,
         description: inputDescriptionValue,
       }),
-    }).finally(() => {
-      setShowForm(false)
-      setIsEditing(false)
     })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+      })
+      .then(({ link }: { link: Link }) => {
+        setListLinks(prev => {
+          if (prev) {
+            return [...prev, link]
+          }
+          return [link]
+        })
+      })
+      .finally(() => {
+        setShowForm(false)
+        setIsEditing(false)
+      })
   }
   return (
     <>

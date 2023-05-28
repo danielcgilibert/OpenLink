@@ -10,11 +10,11 @@ export const PencilIcon: React.FC<ComponentProps<'svg'>> = props => {
       width={SIZE}
       height={SIZE}
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round">
+      strokeLinecap="round"
+      strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
       <path d="M13.5 6.5l4 4"></path>
@@ -30,11 +30,11 @@ export const DragIcon: React.FC<ComponentProps<'svg'>> = props => {
       width={SIZE}
       height={SIZE}
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round">
+      strokeLinecap="round"
+      strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M9 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
       <path d="M9 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
@@ -54,11 +54,11 @@ export const FormIcon: React.FC<ComponentProps<'svg'>> = props => {
       width={SIZE}
       height={SIZE}
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round">
+      strokeLinecap="round"
+      strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M12 3a3 3 0 0 0 -3 3v12a3 3 0 0 0 3 3"></path>
       <path d="M6 3a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3"></path>
@@ -78,11 +78,11 @@ export const LinkIcon: React.FC<ComponentProps<'svg'>> = props => {
       width={SIZE}
       height={SIZE}
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round">
+      strokeLinecap="round"
+      strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M9 15l6 -6"></path>
       <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"></path>
@@ -99,11 +99,11 @@ export const EyeIcon: React.FC<ComponentProps<'svg'>> = props => {
       width={SIZE}
       height={SIZE}
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round">
+      strokeLinecap="round"
+      strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
       <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
@@ -119,11 +119,11 @@ export const CloseIcon: React.FC<ComponentProps<'svg'>> = props => {
       width={SIZE}
       height={SIZE}
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round">
+      strokeLinecap="round"
+      strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M18 6l-12 12"></path>
       <path d="M6 6l12 12"></path>

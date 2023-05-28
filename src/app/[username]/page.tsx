@@ -14,25 +14,16 @@ export default async function Page({
 
   return (
     <main className="flex flex-col   bg-neutral-100 shadow-xl h-screen  text-black max-w-4xl mx-auto p-5  gap-12 md:px-44">
-      <header className="flex  justify-start items-center gap-3   p-5 border-b-2  border-zinc-800">
+      <header className="flex flex-col justify-center items-center gap-3   p-5 border-b-2  border-zinc-800">
         <img
           className="rounded-full border-[4px] border-black  w-24 h-24   "
           src={bio?.avatar}
-          alt="asdasd"
+          alt="avatar"
         />
 
         <div>
           <h1 className="text-3xl">{bio?.name}</h1>
           <p className="hidden md:text-sm">{bio?.description}</p>
-        </div>
-
-        <div className="flex flex-col md:flex-row flex-1 justify-end gap-2 ">
-          <button className="border-2 bg-zinc-800  border-zinc-800   p-2 rounded">
-            📩
-          </button>
-          <button className="border-2 bg-blue-600  border-cyan-500   p-2 rounded">
-            🩷
-          </button>
         </div>
       </header>
 

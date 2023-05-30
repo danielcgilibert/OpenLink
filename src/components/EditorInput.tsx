@@ -1,7 +1,8 @@
 'use client'
-import React, { ChangeEvent, useRef, useState } from 'react'
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { PencilIcon } from './Icons'
+import useDebounce from '@/hooks/useDebounce'
 
 export default function EditorInput({
   text,
@@ -17,28 +18,25 @@ export default function EditorInput({
   const [isEditing, setIsEditing] = useState(false)
   const [inputValue, setInputValue] = useState(text)
   const input = useRef<HTMLInputElement | null>(null)
-  const debounceRef = useRef<NodeJS.Timeout>()
+  const debonuceValue = useDebounce(input.current?.value, 200)
 
-  const onQueryChanged = (event: ChangeEvent<HTMLInputElement>) => {
-    if (debounceRef.current) {
-      clearTimeout(debounceRef.current)
-    }
-
-    debounceRef.current = setTimeout(() => {
-      console.log('onQueryChanged', event.target.value)
-      fetch('/api/link', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id,
-          input: input.current?.value || inputValue,
-          type,
-        }),
-      })
-    }, 500)
+  const onQueryChanged = () => {
+    fetch('/api/link', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        input: input.current?.value || inputValue,
+        type,
+      }),
+    })
   }
+
+  useEffect(() => {
+    onQueryChanged()
+  }, [debonuceValue])
 
   return (
     <button
@@ -56,10 +54,7 @@ export default function EditorInput({
         )}
         type={type}
         value={inputValue}
-        onChange={e => {
-          setInputValue(e.target.value)
-          onQueryChanged(e)
-        }}
+        onChange={e => setInputValue(e.target.value)}
         tabIndex={isEditing ? 0 : -1}
         name={type}
         aria-label="Edit link title"

@@ -12,9 +12,10 @@ export default function MovilPreview({ username }: { username: string }) {
     },
   })
 
+  //! quit refetchInterval
   const { data: links, isLoading } = useQuery({
     queryKey: ['links'],
-    refetchInterval: 500,
+    refetchInterval: 200,
     queryFn: () => {
       return fetch(`/api/link`).then(res => res.json())
     },
@@ -37,7 +38,7 @@ export default function MovilPreview({ username }: { username: string }) {
               />
 
               <div>
-                <h1 className="text-3xl">{bioData.bio.name}</h1>
+                <h1 className="text-3xl">{username}</h1>
                 <p className="hidden md:text-sm">{bioData.bio.description}</p>
               </div>
             </header>

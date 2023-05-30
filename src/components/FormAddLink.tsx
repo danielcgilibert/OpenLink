@@ -32,11 +32,14 @@ export default function FormAddLink({
       }),
     })
       .then(res => {
-        if (res.ok) {
-          toast.success('Link created')
-          return res.json()
+        if (!res.ok) {
+          toast.error('Error creating link')
+          throw new Error('Error creating link')
         }
+        toast.success('Link created')
+        return res.json()
       })
+
       .then(({ link }: { link: Link }) => {
         setListLinks(prev => {
           if (prev) {
@@ -44,6 +47,9 @@ export default function FormAddLink({
           }
           return [link]
         })
+      })
+      .catch(err => {
+        console.log(err)
       })
       .finally(() => {
         setShowForm(false)
@@ -80,7 +86,7 @@ export default function FormAddLink({
       </header>
 
       {showForm && (
-        <Transition open={showForm} className="max-h-full">
+        <Transition open={showForm}>
           <form
             name="linkForm"
             onSubmit={handleSubmit}

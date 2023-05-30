@@ -2,6 +2,7 @@ import QueryProvider from '@/providers/QueryProvider'
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,6 +26,10 @@ export default async function RootLayout({
           <main className="max-w-5xl mx-auto h-full">{children}</main>
         </body>
       </QueryProvider>
+      <Script
+        src="https://umami-seven-zeta.vercel.app/script.js"
+        data-website-id="d9359e0b-9d8e-4cf8-aa6b-033da2f78a36"
+      />
     </html>
   )
 }

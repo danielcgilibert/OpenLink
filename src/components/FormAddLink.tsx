@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import { CloseIcon, FormIcon, LinkIcon } from './Icons'
 import { Transition } from '@/animations/Transition'
 import { Link } from '@prisma/client'
+import { toast } from 'react-hot-toast'
 
 interface FormAddLinkProps {
   setIsEditing: (isEditing: boolean) => void
@@ -32,6 +33,7 @@ export default function FormAddLink({
     })
       .then(res => {
         if (res.ok) {
+          toast.success('Link created')
           return res.json()
         }
       })

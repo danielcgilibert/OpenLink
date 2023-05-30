@@ -24,18 +24,23 @@ export default function FormBio() {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className="border-2 min-h-  border-black p-5 rounded">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <input
           type="text"
-          className="border-2 border-black rounded p-2"
+          className="bg-zinc-100 rounded-lg p-5 border-2  "
           placeholder="url de tu bio"
           onChange={e => setBioUrl(e.target.value)}
           value={bioUrl}
         />
+        <span className="bg-blue-500 rounded-lg p-5 text-white text-center">
+          http://localhost.com/
+          <span className="text-yellow-300">{bioUrl}</span>
+        </span>
+
+        <button className="bg-yellow-300 p-4 mt-8 rounded-full">
+          Create Account
+        </button>
       </form>
-      <span>tu url sera : http://localhost.com/{bioUrl}</span>
     </>
   )
 }

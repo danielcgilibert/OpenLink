@@ -73,6 +73,10 @@ export default async function Home() {
         alt=""
         className="absolute -z-30 w-screen h-screen top-0 left-0 object-cover"
       />
+
+      <span className="absolute flex justify-center font-semibold items-center inset-0 h-8 bg-yellow-300 mx-5 mt-5 text-black  rounded-lg">
+        APP IN DEVELOPMENT
+      </span>
     </>
   )
 }

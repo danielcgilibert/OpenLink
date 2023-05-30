@@ -3,6 +3,7 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { PrismaClient } from '@prisma/client'
 import { AuthOptions } from 'next-auth'
 import NextAuth from 'next-auth/next'
+import { redirect } from 'next/navigation'
 
 const prisma = new PrismaClient()
 
@@ -18,9 +19,12 @@ export const authOptions: AuthOptions = {
     strategy: 'jwt',
   },
   callbacks: {
-    async redirect({ url, baseUrl }) {
-      return baseUrl
-    },
+    // async signIn({ user, account, profile, email, credentials }) {
+    //   return true
+    // },
+    // async redirect({ url, baseUrl }) {
+    //   return baseUrl
+    // },
   },
 
   secret: process.env.NEXTAUTH_SECRET,

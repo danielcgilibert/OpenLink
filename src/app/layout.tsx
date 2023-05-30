@@ -1,6 +1,7 @@
 import QueryProvider from '@/providers/QueryProvider'
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,6 +20,8 @@ export default async function RootLayout({
       <QueryProvider>
         <body
           className={`relative bg-[#f3f3f1] h-screen w-full   ${inter.className}`}>
+          <Toaster />
+
           <main className="max-w-5xl mx-auto h-full">{children}</main>
         </body>
       </QueryProvider>

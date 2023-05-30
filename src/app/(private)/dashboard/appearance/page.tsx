@@ -15,7 +15,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <div className="grid md:grid-cols-2 w-full ">Aparrence</div>
+      <div className="grid  place-content-center mt-5 ">IN DEVELOPMENT</div>
     </>
   )
 }

@@ -1,4 +1,6 @@
 import { EyeIcon } from '@/components/Icons'
+import Button from '@/components/LoginButton'
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 
 export default async function Home() {
@@ -24,11 +26,7 @@ export default async function Home() {
                 Watch example
               </button>
             </div>
-            <Link
-              className="px-7 uppercase py-4 bg-indigo-900  rounded-full flex justify-center items-center gap-2 border-2 "
-              href="/dashboard">
-              Dashboard
-            </Link>
+            <Button>Dashboard</Button>
           </div>
           <img src="rainbox.svg" className="hidden md:block  min-w-[650px]  " />
         </section>

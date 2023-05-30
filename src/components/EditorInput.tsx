@@ -23,6 +23,7 @@ export default function EditorInput({
     if (debounceRef.current) {
       clearTimeout(debounceRef.current)
     }
+
     debounceRef.current = setTimeout(() => {
       console.log('onQueryChanged', event.target.value)
       fetch('/api/link', {

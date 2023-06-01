@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+/build
+/package
+.env
+.env.*
+!.env.example
+pnpm-lock.yaml
+/.next
+/public
+/out
+docker-compose.yml

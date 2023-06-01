@@ -2,51 +2,51 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { Link } from '@prisma/client'
-import Loading from './Loading'
+import Spinner from '@/ui/Spinner'
 
 export default function MovilPreview({ username }: { username: string }) {
   const { data: bioData } = useQuery({
     queryKey: ['bio'],
     queryFn: () => {
-      return fetch(`/api/bio/${username}`).then(res => res.json())
-    },
+      return fetch(`/api/bio/${username}`).then((res) => res.json())
+    }
   })
 
   //! quit refetchInterval
   const { data: links, isLoading } = useQuery({
     queryKey: ['links'],
-    refetchInterval: 200,
     queryFn: () => {
-      return fetch(`/api/link`).then(res => res.json())
-    },
+      return fetch(`/api/link`).then((res) => res.json())
+    }
   })
 
   return (
     <section>
-      <div className="hidden  md:block relative -z-10 border-[10px] border-black rounded-[3rem] overflow-auto w-[352px] h-[754px] m-auto left-0 right-0 top-10 ">
+      <div className='relative  left-0 right-0 top-10 -z-10 m-auto hidden h-[754px] w-[352px] overflow-auto rounded-[3rem] border-[10px] border-black md:block '>
         {isLoading ? (
-          <div className="flex justify-center items-center min-h-full">
-            <Loading />
+          <div className='flex min-h-full items-center justify-center'>
+            <Spinner />
           </div>
         ) : (
           <>
-            <header className="flex flex-col justify-center items-center gap-3   p-5 border-b-2  border-zinc-800">
+            <header className='flex flex-col items-center justify-center gap-3   border-b-2 border-zinc-800  p-5'>
               <img
-                className="rounded-full border-[4px] border-black  w-24 h-24   "
+                referrerPolicy='no-referrer'
+                className='h-24 w-24 rounded-full  border-[4px] border-black   '
                 src={bioData.bio.avatar}
-                alt="avatar"
+                alt='avatar'
               />
 
               <div>
-                <h1 className="text-3xl">{username}</h1>
-                <p className="hidden md:text-sm">{bioData.bio.description}</p>
+                <h1 className='text-3xl'>{username}</h1>
+                <p className='hidden md:text-sm'>{bioData.bio.description}</p>
               </div>
             </header>
-            <section className="flex flex-col gap-5   text-center p-5  ">
+            <section className='flex flex-col gap-5   p-5 text-center  '>
               {links.data?.map((link: Link) => (
                 <div
                   key={link.id}
-                  className="bg-zinc-800 text-white p-5    rounded ">
+                  className='rounded bg-zinc-800 p-5    text-white '>
                   {link.title}
                 </div>
               ))}

@@ -1,4 +1,4 @@
-import { EyeIcon } from '@/components/Icons'
+import { EyeIcon } from '@/ui/Icons'
 import Button from '@/components/LoginButton'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
@@ -6,29 +6,29 @@ import Link from 'next/link'
 export default async function Home() {
   return (
     <>
-      <div className="grid p-8 gap-16 md:justify-center h-full text-white">
-        <section className="grid md:grid-cols-2  items-center text-center md:text-left ">
-          <div className="flex flex-col gap-8">
+      <div className='grid h-full gap-16 p-8 text-white md:justify-center'>
+        <section className='grid items-center  text-center md:grid-cols-2 md:text-left '>
+          <div className='flex flex-col gap-8'>
             <div>
-              <h1 className="text-4xl md:text-6xl">
+              <h1 className='text-4xl md:text-6xl'>
                 All connections in One Place
               </h1>
-              <h2 className="text-xl md:text-2xl mt-2 text-gray-300">
+              <h2 className='mt-2 text-xl text-gray-300 md:text-2xl'>
                 Your Personalized Link Hub
               </h2>
             </div>
-            <div className="flex flex-col flex-1 md:flex-row gap-5">
-              <button className="w-full uppercase py-4 bg-[#F8D054] rounded-full text-zinc-950">
+            <div className='flex flex-1 flex-col gap-5 md:flex-row'>
+              <button className='w-full rounded-full bg-[#F8D054] py-4 uppercase text-zinc-950'>
                 try for free
               </button>
-              <button className=" w-full uppercase py-4 rounded-full flex justify-center items-center gap-2 border-2 ">
-                <EyeIcon className="w-6 h-6" />
+              <button className=' flex w-full items-center justify-center gap-2 rounded-full border-2 py-4 uppercase '>
+                <EyeIcon className='h-6 w-6' />
                 Watch example
               </button>
             </div>
             <Button>Dashboard</Button>
           </div>
-          <img src="rainbox.svg" className="hidden md:block  min-w-[650px]  " />
+          <img src='rainbox.svg' className='hidden min-w-[650px]  md:block  ' />
         </section>
 
         {/* <div className="grid md:grid-cols-3 gap-24 h-fit">
@@ -69,12 +69,12 @@ export default async function Home() {
       </div>
 
       <img
-        src="Cloudy.svg"
-        alt=""
-        className="absolute -z-30 w-screen h-screen top-0 left-0 object-cover"
+        src='Cloudy.svg'
+        alt=''
+        className='absolute left-0 top-0 -z-30 h-screen w-screen object-cover'
       />
 
-      <span className="absolute flex justify-center font-semibold items-center inset-0 h-8 bg-yellow-300 mx-5 mt-5 text-black  rounded-lg">
+      <span className='absolute inset-0 mx-5 mt-5 flex h-8 items-center justify-center rounded-lg bg-yellow-300 font-semibold  text-black'>
         APP IN DEVELOPMENT
       </span>
     </>

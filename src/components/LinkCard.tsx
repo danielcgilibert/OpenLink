@@ -1,36 +1,29 @@
 'use client'
 import { Link } from '@prisma/client'
-import { DragIcon, TrashIcon } from './Icons'
+import { DragIcon, TrashIcon } from '../ui/Icons'
 import EditorInput from './EditorInput'
+import { deleteLink } from '@/server/services/deleteLink'
 
 export default function LinkCard({ link }: { link: Link }) {
-  const handleDelete = async () => {
-    fetch(`/api/link/${link.id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-  }
   return (
-    <div className="flex   gap-5 rounded-lg py-9 p-5 bg-white shadow">
-      <div className="flex justify-center items-center">
-        <DragIcon className="w-5 h-5" />
+    <div className='flex gap-5 rounded-lg bg-white p-5 py-9 shadow'>
+      <div className='flex items-center justify-center'>
+        <DragIcon className='h-5 w-5' />
       </div>
-      <div className="flex flex-col  w-full">
-        <div className="flex flex-col gap-1">
+      <div className='flex w-full flex-col'>
+        <div className='flex flex-col gap-1'>
           <EditorInput
             id={link.id}
             text={link.title}
-            type="text"
-            className="font-bold"
+            type='text'
+            className='font-bold'
           />
-          <EditorInput id={link.id} text={link.url} type="url" />
+          <EditorInput id={link.id} text={link.url} type='url' />
         </div>
 
-        <div className="flex justify-end items-end ">
-          <button className="p-1" onClick={handleDelete}>
-            <TrashIcon className="w-5 h-5" />
+        <div className='flex items-end justify-end '>
+          <button className='p-1' onClick={() => deleteLink(link.id)}>
+            <TrashIcon className='h-5 w-5' />
           </button>
         </div>
       </div>

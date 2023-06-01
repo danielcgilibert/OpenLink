@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server'
-import prisma from '@/libs/prismadb'
+import { prisma } from '@/server/db'
 
 export async function GET(
   request: Request,
   {
-    params,
+    params
   }: {
     params: {
       username: string
@@ -20,8 +20,8 @@ export async function GET(
 
     const bio = await prisma.bio.findUnique({
       where: {
-        username: username,
-      },
+        username: username
+      }
     })
 
     return NextResponse.json({
@@ -30,13 +30,13 @@ export async function GET(
         name: bio?.name,
         avatar: bio?.avatar,
         description: bio?.description,
-        footerDesc: bio?.footerDesc,
-      },
+        footerDesc: bio?.footerDesc
+      }
     })
   } catch (error) {
     console.log(error)
     return NextResponse.json({
-      ok: false,
+      ok: false
     })
   }
 }

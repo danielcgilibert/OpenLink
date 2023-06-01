@@ -1,6 +1,6 @@
-import getCurrentUser from '@/actions/getUser'
+import { getCurrentUser } from '@/server/services/getUser'
 import { NextResponse } from 'next/server'
-import prisma from '@/libs/prismadb'
+import { prisma } from '@/server/db'
 import { validUrl } from '@/libs/validUrl'
 export async function GET(request: Request) {
   const currentUser = await getCurrentUser()
@@ -11,8 +11,8 @@ export async function GET(request: Request) {
 
   const bio = await prisma.bio.findUnique({
     where: {
-      userId: currentUser.id as string,
-    },
+      userId: currentUser.id as string
+    }
   })
 
   if (!bio) {
@@ -21,15 +21,15 @@ export async function GET(request: Request) {
 
   const links = await prisma.link.findMany({
     where: {
-      bioId: bio?.id as number,
-    },
+      bioId: bio?.id as number
+    }
   })
 
   await prisma.$disconnect()
 
   return NextResponse.json({
     ok: true,
-    data: links,
+    data: links
   })
 }
 
@@ -45,14 +45,16 @@ export async function POST(request: Request) {
   const newUrl = validUrl(url)
 
   if (!newUrl) {
-    console.log('no es una url valida')
-    return NextResponse.error()
+    return NextResponse.json(
+      { ok: false, error: 'no es una url valida' },
+      { status: 500 }
+    )
   }
 
   const bio = await prisma.bio.findUnique({
     where: {
-      userId: currentUser.id,
-    },
+      userId: currentUser.id
+    }
   })
 
   if (!bio) {
@@ -66,15 +68,15 @@ export async function POST(request: Request) {
       icon: '',
       description: description || '',
       title: newTitle,
-      bioId: bio.id as number,
-    },
+      bioId: bio.id as number
+    }
   })
 
   await prisma.$disconnect()
 
   return NextResponse.json({
     ok: true,
-    link: newLink,
+    link: newLink
   })
 }
 
@@ -94,11 +96,11 @@ export async function PUT(request: Request) {
   let data = {}
   if (type === 'url') {
     data = {
-      url: input,
+      url: input
     }
   } else {
     data = {
-      title: input,
+      title: input
     }
   }
 
@@ -106,9 +108,9 @@ export async function PUT(request: Request) {
 
   const link = await prisma.link.update({
     where: {
-      id: id,
+      id: id
     },
-    data,
+    data
   })
 
   if (!link) {
@@ -119,6 +121,6 @@ export async function PUT(request: Request) {
 
   return NextResponse.json({
     ok: true,
-    data: link,
+    data: link
   })
 }

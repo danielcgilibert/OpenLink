@@ -1,14 +1,12 @@
-import prisma from '@/libs/prismadb'
-import getCurrentUser from './getUser'
+import { prisma } from '@/server/db'
 
-export default async function getBio() {
+export async function getPublicBio(username: string) {
+  //! delete this function
   try {
-    const user = await getCurrentUser()
-
     const bio = await prisma.bio.findUnique({
       where: {
-        userId: user?.id,
-      },
+        username: username
+      }
     })
 
     if (!bio) {

@@ -1,5 +1,5 @@
-import getBio from '@/actions/getBio'
-import getLinks from '@/actions/getLinks'
+import { getBio } from '@/server/services/getBio'
+import { getLinks } from '@/server/services/getLinks'
 import FormAddLink from '@/components/FormAddLink'
 import { redirect } from 'next/navigation'
 import ListLinks from '@/components/ListLinks'
@@ -15,7 +15,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <div className="grid  place-content-center mt-5 ">IN DEVELOPMENT</div>
+      <div className='mt-5  grid place-content-center '>IN DEVELOPMENT</div>
     </>
   )
 }

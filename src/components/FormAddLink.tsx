@@ -1,10 +1,11 @@
 'use client'
 
 import { Dispatch, SetStateAction, useState } from 'react'
-import { CloseIcon, FormIcon, LinkIcon } from './Icons'
-import { Transition } from '@/animations/Transition'
+import { CloseIcon, FormIcon, LinkIcon } from '../ui/Icons'
+import { SizeTransition } from '@/animations/SizeTransition'
 import { Link } from '@prisma/client'
 import { toast } from 'react-hot-toast'
+import { postLink } from '@/server/services/postLink'
 
 interface FormAddLinkProps {
   setIsEditing: (isEditing: boolean) => void
@@ -12,57 +13,39 @@ interface FormAddLinkProps {
 }
 export default function FormAddLink({
   setIsEditing,
-  setListLinks,
+  setListLinks
 }: FormAddLinkProps) {
   const [showForm, setShowForm] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const form = e.target as HTMLFormElement
     const inputUrlValue = form.url.value as string
     const inputDescriptionValue = form.description.value as string
-    fetch('/api/link', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        url: inputUrlValue,
-        description: inputDescriptionValue,
-      }),
-    })
-      .then(res => {
-        if (!res.ok) {
-          toast.error('Error creating link')
-          throw new Error('Error creating link')
-        }
-        toast.success('Link created')
-        return res.json()
-      })
 
-      .then(({ link }: { link: Link }) => {
-        setListLinks(prev => {
-          if (prev) {
-            return [...prev, link]
-          }
-          return [link]
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
-      .finally(() => {
-        setShowForm(false)
-        setIsEditing(false)
-      })
+    const link = await postLink(inputUrlValue, inputDescriptionValue)
+    if (!link) {
+      toast.error('Error creating link')
+      return
+    }
+    toast.success('Link created')
+    setListLinks((prev: any) => {
+      if (prev) {
+        return [...prev, link]
+      }
+      return [link]
+    })
+
+    setShowForm(false)
+    setIsEditing(false)
   }
   return (
     <>
       <header>
         {showForm ? (
-          <div className="flex items-center justify-between border-b py-3">
-            <h1 className="flex items-center gap-1 text-base text-gray-800">
-              <FormIcon className="w-6 h-6" />
+          <div className='flex items-center justify-between border-b py-3'>
+            <h1 className='flex items-center gap-1 text-base text-gray-800'>
+              <FormIcon className='h-6 w-6' />
               Create Link Form
             </h1>
             <button
@@ -70,7 +53,7 @@ export default function FormAddLink({
                 setShowForm(!showForm)
                 setIsEditing(false)
               }}>
-              <CloseIcon className="bg-gray-300 rounded-full w-6 h-6 p-[5px] " />
+              <CloseIcon className='h-6 w-6 rounded-full bg-gray-300 p-[5px] ' />
             </button>
           </div>
         ) : (
@@ -79,51 +62,51 @@ export default function FormAddLink({
               setShowForm(!showForm)
               setIsEditing(true)
             }}
-            className="bg-purple-700 text-white py-2  rounded-full w-full">
+            className='w-full rounded-full bg-purple-700  py-2 text-white'>
             + Add Link
           </button>
         )}
       </header>
 
       {showForm && (
-        <Transition open={showForm}>
+        <SizeTransition open={showForm}>
           <form
-            name="linkForm"
+            name='linkForm'
             onSubmit={handleSubmit}
-            className="flex flex-col gap-5">
-            <div className="w-full space-y-2">
+            className='flex flex-col gap-5'>
+            <div className='w-full space-y-2'>
               <label
-                htmlFor="url"
-                className="flex  items-center gap-1 text-xs font-medium text-gray-500">
+                htmlFor='url'
+                className='flex  items-center gap-1 text-xs font-medium text-gray-500'>
                 <LinkIcon /> URL
               </label>
               <input
-                name="url"
-                type="text"
+                name='url'
+                type='text'
                 required
-                placeholder="https://example.com"
-                className="block w-full rounded-md border-gray-200 text-sm transition focus:border-blue-600  border-2 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75 p-4"
+                placeholder='https://example.com'
+                className='block w-full rounded-md border-2 border-gray-200 p-4 text-sm  transition focus:border-blue-600 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75'
               />
             </div>
 
-            <div className="w-full space-y-2">
+            <div className='w-full space-y-2'>
               <label
-                htmlFor="description"
-                className="flex  items-center gap-1 text-xs font-medium text-gray-500">
+                htmlFor='description'
+                className='flex  items-center gap-1 text-xs font-medium text-gray-500'>
                 <LinkIcon /> Description
               </label>
               <input
-                name="description"
-                type="text"
-                placeholder="Go to my website"
-                className="block w-full rounded-md border-gray-200 text-sm transition focus:border-blue-600  border-2 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75 p-4"
+                name='description'
+                type='text'
+                placeholder='Go to my website'
+                className='block w-full rounded-md border-2 border-gray-200 p-4 text-sm  transition focus:border-blue-600 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75'
               />
             </div>
-            <button className="bg-gray-200 rounded-md py-2 border-2 ">
+            <button className='rounded-md border-2 bg-gray-200 py-2 '>
               Add
             </button>
           </form>
-        </Transition>
+        </SizeTransition>
       )}
     </>
   )

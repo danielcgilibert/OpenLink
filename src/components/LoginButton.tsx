@@ -3,13 +3,13 @@ import { signIn } from 'next-auth/react'
 import React from 'react'
 
 export default function LoginButton({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
   return (
     <button
-      className="px-7 uppercase py-4 bg-indigo-900  rounded-full flex justify-center items-center gap-2 border-2 "
+      className='flex items-center justify-center gap-2  rounded-full border-2 bg-indigo-900 px-7 py-4 uppercase '
       onClick={() => signIn('google', { callbackUrl: '/dashboard' })}>
       {children}
     </button>

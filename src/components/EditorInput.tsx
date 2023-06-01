@@ -1,17 +1,18 @@
 'use client'
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
-import { PencilIcon } from './Icons'
+import { PencilIcon } from '../ui/Icons'
 import useDebounce from '@/hooks/useDebounce'
+import { updateLink } from '@/server/services/updateLink'
 
 export default function EditorInput({
   text,
   className,
   type = 'text',
-  id,
+  id
 }: {
   text: string
-  type?: 'text' | 'url'
+  type: 'text' | 'url'
   className?: string
   id: number
 }) {
@@ -21,17 +22,7 @@ export default function EditorInput({
   const debonuceValue = useDebounce(input.current?.value, 200)
 
   const onQueryChanged = () => {
-    fetch('/api/link', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id,
-        input: input.current?.value || inputValue,
-        type,
-      }),
-    })
+    updateLink(id, input.current?.value || inputValue, type)
   }
 
   useEffect(() => {
@@ -46,18 +37,21 @@ export default function EditorInput({
           input.current?.focus()
         }
       }}
-      className="inline-grid grid-cols-[minmax(0,_100%)] items-baseline ">
+      className={clsx(
+        'inline-grid cursor-pointer grid-cols-[minmax(0,_100%)] items-baseline',
+        isEditing && 'cursor-text'
+      )}>
       <input
         className={clsx(
           !isEditing && 'opacity-0',
-          `text-sm border-none row-start-1 col-start-1 mb-1 inline-flex min-w-full outline-none ${className}`
+          `col-start-1 row-start-1  inline-flex min-w-full  cursor-pointer  border-none text-sm outline-none   ${className}`
         )}
         type={type}
         value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
+        onChange={(e) => setInputValue(e.target.value)}
         tabIndex={isEditing ? 0 : -1}
         name={type}
-        aria-label="Edit link title"
+        aria-label='Edit link title'
         autoFocus
         ref={input}
         onBlur={() => setIsEditing(false)}
@@ -66,13 +60,13 @@ export default function EditorInput({
       <div
         className={clsx(
           isEditing && 'opacity-0',
-          'row-start-1 col-start-1  inline-flex items-center'
+          'col-start-1 row-start-1  mt-2 inline-flex items-center'
         )}>
-        <div className="flex justify-center items-center">
+        <div className='flex items-center justify-center'>
           <p
             className={clsx(
               type === 'text' && 'first-letter:uppercase',
-              `text-sm border-none outline-none ${className}  `
+              `border-none text-sm outline-none  ${className}  `
             )}>
             {input.current?.value || inputValue}
           </p>

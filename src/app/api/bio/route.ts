@@ -1,6 +1,6 @@
-import getCurrentUser from '@/actions/getUser'
+import { getCurrentUser } from '@/server/services/getUser'
 import { NextResponse } from 'next/server'
-import prisma from '@/libs/prismadb'
+import { prisma } from '@/server/db'
 
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser()
@@ -23,13 +23,13 @@ export async function POST(request: Request) {
         'https://lh3.googleusercontent.com/a/AGNmyxZYqzLW4za-qZaVPm4yKJJwTN-396_71rOMZjkHXQ=s96-c',
       name: 'pepe',
       description: 'sin descripción',
-      footerDesc: 'sin descripción',
-    },
+      footerDesc: 'sin descripción'
+    }
   })
 
   await prisma.$disconnect()
 
   return NextResponse.json({
-    ok: true,
+    ok: true
   })
 }

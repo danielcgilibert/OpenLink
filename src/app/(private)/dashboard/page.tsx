@@ -1,5 +1,5 @@
-import getBio from '@/actions/getBio'
-import getLinks from '@/actions/getLinks'
+import { getBio } from '@/server/services/getBio'
+import { getLinks } from '@/server/services/getLinks'
 import { redirect } from 'next/navigation'
 import EditorLinks from '@/components/EditorLinks'
 import MovilPreview from '@/components/MovilPreview'
@@ -15,7 +15,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <div className="grid md:grid-cols-2 w-full ">
+      <div className='grid w-full md:grid-cols-2 '>
         <EditorLinks links={links} />
         <MovilPreview username={bio.username} />
       </div>

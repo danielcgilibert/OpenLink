@@ -1,19 +1,19 @@
 'use client'
+import { Link } from '@prisma/client'
 import LinkCard from './LinkCard'
-import { useTransition, animated } from '@react-spring/web'
+import { FadeIn } from '@/animations/FadeIn'
 
-export default function ListLinks({ links }: any) {
-  const transitions = useTransition(links, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    delay: 150,
-  })
+export default function ListLinks({
+  links = []
+}: {
+  links: Link[] | null | undefined
+}) {
   return (
-    <div className="flex flex-col gap-5">
-      {transitions((style, link) => (
-        <animated.div style={style} className="min-w-full">
+    <div className='flex flex-col gap-5'>
+      {links?.map((link, index) => (
+        <FadeIn delay={120 * index}>
           <LinkCard key={link.id} link={link} />
-        </animated.div>
+        </FadeIn>
       ))}
     </div>
   )

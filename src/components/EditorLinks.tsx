@@ -6,7 +6,7 @@ import { Link } from '@prisma/client'
 import clsx from 'clsx'
 
 export default function EditorLinks({
-  links,
+  links
 }: {
   links: Link[] | null | undefined
 }) {
@@ -14,13 +14,13 @@ export default function EditorLinks({
   const [listLinks, setListLinks] = useState(links)
 
   return (
-    <section className="flex flex-col gap-5 p-5 ">
+    <section className='flex flex-col gap-5 p-5'>
       <FormAddLink setIsEditing={setIsEditing} setListLinks={setListLinks} />
 
       <div
         className={clsx(
-          isEditing && 'blur-[2px] pointer-events-none',
-          'transition-all ease-in delay-75 duration-200'
+          isEditing && 'pointer-events-none blur-[2px]',
+          'transition-all delay-75 duration-200 ease-in'
         )}>
         <ListLinks links={listLinks} />
       </div>

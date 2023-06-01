@@ -8,17 +8,17 @@ export default function Modal() {
   return (
     <Transition
       show={isOpen}
-      enter="transition duration-100 ease-out"
-      enterFrom="transform scale-95 opacity-0"
-      enterTo="transform scale-100 opacity-100"
-      leave="transition duration-75 ease-out"
-      leaveFrom="transform scale-100 opacity-100"
-      leaveTo="transform scale-95 opacity-0"
+      enter='transition duration-100 ease-out'
+      enterFrom='transform scale-95 opacity-0'
+      enterTo='transform scale-100 opacity-100'
+      leave='transition duration-75 ease-out'
+      leaveFrom='transform scale-100 opacity-100'
+      leaveTo='transform scale-95 opacity-0'
       as={Fragment}>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-        <div className="fixed inset-0 flex items-center justify-center p-4">
-          <Dialog.Panel className="bg-slate-100 rounded p-5">
+        <div className='fixed inset-0 bg-black/30' aria-hidden='true' />
+        <div className='fixed inset-0 flex items-center justify-center p-4'>
+          <Dialog.Panel className='rounded bg-slate-100 p-5'>
             <Dialog.Title>Deactivate account</Dialog.Title>
             <Dialog.Description>
               This will permanently deactivate your account

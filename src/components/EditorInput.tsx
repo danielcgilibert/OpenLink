@@ -62,7 +62,7 @@ export default function EditorInput({
           isEditing && 'opacity-0',
           'col-start-1 row-start-1  mt-2 inline-flex items-center'
         )}>
-        <div className='flex items-center justify-center'>
+        <div className='flex items-center justify-center gap-1'>
           <p
             className={clsx(
               type === 'text' && 'first-letter:uppercase',

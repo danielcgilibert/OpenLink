@@ -14,7 +14,7 @@ export default function EditorLinks({
   const [listLinks, setListLinks] = useState(links)
 
   return (
-    <section className='flex flex-col gap-5 p-5'>
+    <section className='flex flex-col gap-5 rounded-lg p-5  '>
       <FormAddLink setIsEditing={setIsEditing} setListLinks={setListLinks} />
 
       <div

@@ -62,7 +62,7 @@ export default function FormAddLink({
               setShowForm(!showForm)
               setIsEditing(true)
             }}
-            className='w-full rounded-full bg-purple-700  py-2 text-white'>
+            className='w-full rounded-full bg-[#7D5A84]  py-2 text-white'>
             + Add Link
           </button>
         )}

@@ -9,7 +9,7 @@ export default function LoginButton({
 }) {
   return (
     <button
-      className='flex items-center justify-center gap-2  rounded-full border-2 bg-indigo-900 px-7 py-4 uppercase '
+      className='w-full rounded-full bg-primary py-4 uppercase text-white shadow-lg '
       onClick={() => signIn('google', { callbackUrl: '/dashboard' })}>
       {children}
     </button>

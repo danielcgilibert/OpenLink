@@ -6,22 +6,22 @@ import { deleteLink } from '@/server/services/deleteLink'
 
 export default function LinkCard({ link }: { link: Link }) {
   return (
-    <div className='flex gap-5 rounded-lg bg-white p-5 py-9 shadow'>
+    <div className='relative flex gap-5 rounded-lg bg-white p-4 pb-6  shadow'>
       <div className='flex items-center justify-center'>
         <DragIcon className='h-5 w-5' />
       </div>
-      <div className='flex w-full flex-col'>
-        <div className='flex flex-col gap-1'>
+      <div className='flex w-full flex-col items-baseline justify-center'>
+        <div className='flex flex-col '>
           <EditorInput
             id={link.id}
             text={link.title}
             type='text'
-            className='font-bold'
+            className=' text-lg font-semibold'
           />
           <EditorInput id={link.id} text={link.url} type='url' />
         </div>
 
-        <div className='flex items-end justify-end '>
+        <div className='absolute right-2 top-2 '>
           <button className='p-1' onClick={() => deleteLink(link.id)}>
             <TrashIcon className='h-5 w-5' />
           </button>

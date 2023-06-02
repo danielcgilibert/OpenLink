@@ -1,6 +1,8 @@
 import { getCurrentUser } from '@/server/services/getUser'
 import { NextResponse } from 'next/server'
 import { prisma } from '@/server/db'
+import { ErrorMessage } from '@/types/error'
+import { validUsername } from '@/libs/validUsername'
 
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser()
@@ -9,27 +11,72 @@ export async function POST(request: Request) {
     return NextResponse.error()
   }
 
-  const { bioUrl } = await request.json()
+  const { username }: { username: string } = await request.json()
 
-  if (!bioUrl) {
-    return NextResponse.error()
+  if (!username) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: ErrorMessage.bioIsRequired
+      },
+      { status: 400 }
+    )
   }
 
-  const bio = await prisma.bio.create({
-    data: {
-      username: bioUrl,
-      userId: currentUser.id,
-      avatar:
-        'https://lh3.googleusercontent.com/a/AGNmyxZYqzLW4za-qZaVPm4yKJJwTN-396_71rOMZjkHXQ=s96-c',
-      name: 'pepe',
-      description: 'sin descripción',
-      footerDesc: 'sin descripción'
+  if (!validUsername(username)) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: ErrorMessage.genericMessage
+      },
+      { status: 400 }
+    )
+  }
+
+  //* Check if bio exists
+  const bio = await prisma.bio.findUnique({
+    where: {
+      username: username.toLowerCase()
     }
   })
 
-  await prisma.$disconnect()
+  if (bio) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: ErrorMessage.bioExists
+      },
+      { status: 409 }
+    )
+  }
 
-  return NextResponse.json({
-    ok: true
-  })
+  //* Create bio
+  await prisma.bio
+    .create({
+      data: {
+        username: username.toLowerCase(),
+        userId: currentUser.id,
+        avatar: currentUser.image || '',
+        name: currentUser.name || '',
+        description: '',
+        footerDesc: ''
+      }
+    })
+    .catch((error) => {
+      if (error.code === 'P2002') {
+        return NextResponse.json(
+          {
+            error: ErrorMessage.bioNotFound
+          },
+          { status: 400 }
+        )
+      }
+    })
+
+  return NextResponse.json(
+    {
+      ok: true
+    },
+    { status: 201 }
+  )
 }

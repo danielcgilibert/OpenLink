@@ -1,10 +1,14 @@
 import QueryProvider from '@/providers/QueryProvider'
 import '../styles/globals.css'
-import { Inter } from 'next/font/google'
+import { Rubik } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
-
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Rubik({
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 export const metadata = {
   title: 'OPENLINK',
@@ -20,9 +24,16 @@ export default async function RootLayout({
     <html lang='en'>
       <QueryProvider>
         <body
-          className={`relative h-screen w-full bg-[#f3f3f1]   ${inter.className}`}>
-          <Toaster />
-
+          className={`relative h-screen w-full  bg-[#F8F8FF]   ${roboto.className}`}>
+          <Toaster
+            position='top-center'
+            reverseOrder={false}
+            toastOptions={{
+              style: {
+                padding: '8px 48px'
+              }
+            }}
+          />
           <main className='mx-auto h-full max-w-5xl'>{children}</main>
         </body>
       </QueryProvider>

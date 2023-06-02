@@ -11,8 +11,8 @@ export default function ListLinks({
   return (
     <div className='flex flex-col gap-5'>
       {links?.map((link, index) => (
-        <FadeIn delay={120 * index}>
-          <LinkCard key={link.id} link={link} />
+        <FadeIn key={link.id} delay={120 * index}>
+          <LinkCard link={link} />
         </FadeIn>
       ))}
     </div>

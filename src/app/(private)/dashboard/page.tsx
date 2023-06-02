@@ -15,7 +15,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <div className='grid w-full md:grid-cols-2 '>
+      <div className='mt-5 grid  w-full rounded-lg   md:grid-cols-2'>
         <EditorLinks links={links} />
         <MovilPreview username={bio.username} />
       </div>

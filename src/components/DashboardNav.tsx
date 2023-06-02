@@ -23,7 +23,7 @@ export default function DashboardNav({
   currentUser: User | null | undefined
 }) {
   return (
-    <nav className='sticky left-0 top-0 flex h-16  w-full items-center justify-between bg-white p-5 shadow  md:mt-5  md:rounded-full'>
+    <nav className='sticky left-0 top-0 z-50 flex  h-16 w-full items-center justify-between bg-white p-5   shadow  md:mt-5 md:rounded-full'>
       <ul className='flex gap-5'>
         {routes.map((route) => (
           <Link key={route.path} href={route.path}>

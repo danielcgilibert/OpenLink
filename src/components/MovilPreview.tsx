@@ -21,8 +21,8 @@ export default function MovilPreview({ username }: { username: string }) {
   })
 
   return (
-    <section>
-      <div className='relative  left-0 right-0 top-10 -z-10 m-auto hidden h-[754px] w-[352px] overflow-auto rounded-[3rem] border-[10px] border-black md:block '>
+    <section className='p-5'>
+      <div className='relative  left-0 right-0 top-0 m-auto hidden h-[754px] w-[352px] overflow-auto rounded-[3rem] border-[10px] border-zinc-800 bg-white md:block '>
         {isLoading ? (
           <div className='flex min-h-full items-center justify-center'>
             <Spinner />
@@ -42,7 +42,7 @@ export default function MovilPreview({ username }: { username: string }) {
                 <p className='hidden md:text-sm'>{bioData.bio.description}</p>
               </div>
             </header>
-            <section className='flex flex-col gap-5   p-5 text-center  '>
+            <section className='flex flex-col   gap-5 p-5 text-center  '>
               {links.data?.map((link: Link) => (
                 <div
                   key={link.id}

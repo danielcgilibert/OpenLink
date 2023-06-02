@@ -25,10 +25,8 @@ export default function UserDropdownMenu({ currentUser }: any) {
       </button>
 
       {openMenu && (
-        <FadeIn
-          className='visible absolute right-0 z-50 my-4 list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow'
-          id='user-dropdown'>
-          <div className='px-4 py-3 '>
+        <FadeIn className='visible absolute right-0   my-4 list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow'>
+          <div className=' px-4 py-3'>
             <span className='block text-sm text-gray-900 '>
               {currentUser.name}
             </span>

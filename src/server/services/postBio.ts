@@ -1,7 +1,7 @@
-export async function postBio(bioUrl: string) {
+export async function postBio(username: string) {
   const response = await fetch('/api/bio', {
     method: 'POST',
-    body: JSON.stringify({ bioUrl }),
+    body: JSON.stringify({ username }),
     headers: {
       'Content-Type': 'application/json'
     }

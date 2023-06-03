@@ -10,7 +10,7 @@ export const PencilIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       width={SIZE}
       height={SIZE}
       viewBox='0 0 24 24'
-      strokeWidth='2'
+      strokeWidth='1.2'
       stroke='currentColor'
       fill='none'
       strokeLinecap='round'
@@ -18,6 +18,51 @@ export const PencilIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
       <path d='M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4'></path>
       <path d='M13.5 6.5l4 4'></path>
+    </svg>
+  )
+}
+
+export const HomeIcon: React.FC<ComponentProps<'svg'>> = (props) => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      {...props}
+      width={SIZE}
+      height={SIZE}
+      viewBox='0 0 24 24'
+      strokeWidth='1.2'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+      <path d='M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0'></path>
+      <path d='M3.6 9h16.8'></path>
+      <path d='M3.6 15h16.8'></path>
+      <path d='M11.5 3a17 17 0 0 0 0 18'></path>
+      <path d='M12.5 3a17 17 0 0 1 0 18'></path>
+    </svg>
+  )
+}
+
+export const ThemeIcon: React.FC<ComponentProps<'svg'>> = (props) => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      {...props}
+      width={SIZE}
+      height={SIZE}
+      viewBox='0 0 24 24'
+      strokeWidth='1.2'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+      <path d='M3 21v-4a4 4 0 1 1 4 4h-4'></path>
+      <path d='M21 3a16 16 0 0 0 -12.8 10.2'></path>
+      <path d='M21 3a16 16 0 0 1 -10.2 12.8'></path>
+      <path d='M10.6 9a9 9 0 0 1 4.4 4.4'></path>
     </svg>
   )
 }
@@ -30,7 +75,7 @@ export const DragIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       width={SIZE}
       height={SIZE}
       viewBox='0 0 24 24'
-      strokeWidth='2'
+      strokeWidth='1.2'
       stroke='currentColor'
       fill='none'
       strokeLinecap='round'
@@ -54,7 +99,7 @@ export const TrashIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       width={SIZE}
       height={SIZE}
       viewBox='0 0 24 24'
-      strokeWidth='1'
+      strokeWidth='1.2'
       stroke='currentColor'
       fill='none'
       strokeLinecap='round'
@@ -76,7 +121,7 @@ export const FormIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       width={SIZE}
       height={SIZE}
       viewBox='0 0 24 24'
-      strokeWidth='2'
+      strokeWidth='1.2'
       stroke='currentColor'
       fill='none'
       strokeLinecap='round'
@@ -100,7 +145,7 @@ export const LinkIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       width={SIZE}
       height={SIZE}
       viewBox='0 0 24 24'
-      strokeWidth='2'
+      strokeWidth='1.2'
       stroke='currentColor'
       fill='none'
       strokeLinecap='round'
@@ -121,7 +166,7 @@ export const EyeIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       width={SIZE}
       height={SIZE}
       viewBox='0 0 24 24'
-      strokeWidth='2'
+      strokeWidth='1.2'
       stroke='currentColor'
       fill='none'
       strokeLinecap='round'
@@ -141,7 +186,7 @@ export const CloseIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       width={SIZE}
       height={SIZE}
       viewBox='0 0 24 24'
-      strokeWidth='2'
+      strokeWidth='1.2'
       stroke='currentColor'
       fill='none'
       strokeLinecap='round'

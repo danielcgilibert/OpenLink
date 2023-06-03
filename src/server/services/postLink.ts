@@ -5,15 +5,14 @@ interface PostLinkResponse {
   ok: boolean
 }
 
-export async function postLink(url: string, description: string) {
+export async function postLink(url: string) {
   const response = await fetch('/api/link', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      url,
-      description
+      url
     })
   })
 

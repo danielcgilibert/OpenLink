@@ -26,7 +26,9 @@ export default function EditorInput({
   }
 
   useEffect(() => {
-    onQueryChanged()
+    if (isEditing) {
+      onQueryChanged()
+    }
   }, [debonuceValue])
 
   return (

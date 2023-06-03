@@ -3,7 +3,7 @@ import { useState } from 'react'
 import FormAddLink from './FormAddLink'
 import ListLinks from './ListLinks'
 import { Link } from '@prisma/client'
-import clsx from 'clsx'
+import { cn } from '@/libs/cn'
 
 export default function EditorLinks({
   links
@@ -14,11 +14,11 @@ export default function EditorLinks({
   const [listLinks, setListLinks] = useState(links)
 
   return (
-    <section className='flex flex-col gap-5 rounded-lg p-5  '>
+    <section className='relative flex flex-col gap-5 rounded-lg'>
       <FormAddLink setIsEditing={setIsEditing} setListLinks={setListLinks} />
 
       <div
-        className={clsx(
+        className={cn(
           isEditing && 'pointer-events-none blur-[2px]',
           'transition-all delay-75 duration-200 ease-in'
         )}>

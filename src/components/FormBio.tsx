@@ -3,6 +3,7 @@ import { FadeIn } from '@/animations/FadeIn'
 import { cn } from '@/libs/cn'
 import { validUsername } from '@/libs/validUsername'
 import { postBio } from '@/server/services/postBio'
+import { Input } from '@/ui/Input'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-hot-toast'
@@ -39,11 +40,12 @@ export default function FormBio() {
             <label htmlFor='username' className='text-zinc-800 text-opacity-40'>
               domain.com/
             </label>
-            <input
+
+            <Input
               type='text'
               id='username'
               name='username'
-              className='w-full bg-zinc-100 text-primary outline-none placeholder:text-zinc-800 placeholder:text-opacity-40 '
+              className='border-none p-0 '
               placeholder='Username'
               onChange={(e) => setUsernameInput(e.target.value)}
               value={usernameInput}

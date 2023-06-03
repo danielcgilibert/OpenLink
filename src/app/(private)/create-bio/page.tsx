@@ -5,9 +5,9 @@ import FormBio from '@/components/FormBio'
 export default async function CreateBio() {
   const bio = await getBio()
 
-  if (bio) {
-    redirect('/dashboard')
-  }
+  // if (bio) {
+  //   redirect('/dashboard')
+  // }
 
   return (
     <>

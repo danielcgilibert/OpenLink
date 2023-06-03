@@ -19,17 +19,19 @@ export async function DELETE(request: Request) {
       userId: currentUser.id as string
     }
   })
+  console.log(id, bio)
 
   if (!bio) {
     return NextResponse.error()
   }
 
-  const link = await prisma.link.deleteMany({
+  const link = await prisma.link.delete({
     where: {
-      bioId: bio?.id as number,
       id: Number(id)
     }
   })
+
+  console.log('este', link)
 
   return NextResponse.json({
     ok: true,

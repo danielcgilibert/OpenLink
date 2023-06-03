@@ -8,7 +8,13 @@ export async function POST(request: Request) {
   const currentUser = await getCurrentUser()
 
   if (!currentUser) {
-    return NextResponse.error()
+    return NextResponse.json(
+      {
+        ok: false,
+        error: ErrorMessage.userNotFound
+      },
+      { status: 401 }
+    )
   }
 
   const { username }: { username: string } = await request.json()

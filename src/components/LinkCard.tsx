@@ -3,8 +3,25 @@ import { Link } from '@prisma/client'
 import { DragIcon, TrashIcon } from '../ui/Icons'
 import EditorInput from './EditorInput'
 import { deleteLink } from '@/server/services/deleteLink'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'react-hot-toast'
 
 export default function LinkCard({ link }: { link: Link }) {
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation({
+    mutationFn: deleteLink,
+    onSuccess: ({ data }) => {
+      // queryClient.refetchQueries()
+
+      queryClient.setQueryData(['link'], (oldData: any) => {
+        queryClient.invalidateQueries({ queryKey: ['links'] })
+        return oldData.filter((link: Link) => link.id !== data.id)
+      })
+      toast.success('Link deleted')
+    }
+  })
+
   return (
     <div className='relative flex gap-5 rounded-lg bg-white p-4 pb-6  shadow'>
       <div className='flex items-center justify-center'>
@@ -22,7 +39,11 @@ export default function LinkCard({ link }: { link: Link }) {
         </div>
 
         <div className='absolute right-2 top-2 '>
-          <button className='p-1' onClick={() => deleteLink(link.id)}>
+          <button
+            className='p-1'
+            onClick={() => {
+              mutation.mutate(link.id)
+            }}>
             <TrashIcon className='h-5 w-5' />
           </button>
         </div>

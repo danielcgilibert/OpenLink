@@ -2,7 +2,6 @@
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { CloseIcon, FormIcon, LinkIcon } from '../ui/Icons'
-import { SizeTransition } from '@/animations/SizeTransition'
 import { Link } from '@prisma/client'
 import { toast } from 'react-hot-toast'
 import { postLink } from '@/server/services/postLink'
@@ -66,7 +65,7 @@ export default function FormAddLink({
             setShowForm(!showForm)
             setIsEditing(true)
           }}
-          className='w-full rounded-full bg-[#7D5A84] py-2  text-white transition-colors hover:bg-[#65486a]'>
+          className='w-full rounded-full bg-[#8E56C7] py-2  text-white transition-colors hover:bg-[#783CB4]'>
           + Add Link
         </button>
       )}

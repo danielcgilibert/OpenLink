@@ -39,7 +39,7 @@ export default function DashboardNav({
               key={route.path}
               href={route.path}
               className={cn(
-                'flex items-center justify-center gap-1 rounded-full px-3 py-1 text-black text-opacity-60 transition-colors duration-200 hover:bg-[#785C81] hover:text-white',
+                'flex items-center justify-center gap-1 rounded-full px-3 py-1 text-black text-opacity-60 transition-colors duration-200 hover:bg-[#8E56C7] hover:text-white',
                 isActive && 'text-opacity-100 '
               )}>
               {route.icon && <span>{route.icon}</span>}

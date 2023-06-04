@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { PencilIcon } from '../ui/Icons'
 import useDebounce from '@/hooks/useDebounce'
 import { updateLink } from '@/server/services/updateLink'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 export default function EditorInput({
   text,
@@ -19,17 +20,24 @@ export default function EditorInput({
   const [isEditing, setIsEditing] = useState(false)
   const [inputValue, setInputValue] = useState(text)
   const input = useRef<HTMLInputElement | null>(null)
-  const debonuceValue = useDebounce(input.current?.value, 200)
+  const debonuceValue = useDebounce(input.current?.value, 300)
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation({
+    mutationFn: updateLink,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['links'] })
+    }
+  })
 
   const onQueryChanged = () => {
-    updateLink(id, input.current?.value || inputValue, type)
+    mutation.mutate({ id, debonuceValue, type })
   }
 
   useEffect(() => {
-    if (isEditing) {
-      onQueryChanged()
-    }
-  }, [debonuceValue])
+    if (!isEditing) return
+    onQueryChanged()
+  }, [debonuceValue, isEditing])
 
   return (
     <button

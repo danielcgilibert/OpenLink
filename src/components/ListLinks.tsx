@@ -20,7 +20,8 @@ export default function ListLinks({
       queryClient.invalidateQueries({ queryKey: ['links'] })
       return result.data
     },
-    initialData: links
+    initialData: links,
+    refetchOnWindowFocus: false
   })
 
   //isLoading || isFetching

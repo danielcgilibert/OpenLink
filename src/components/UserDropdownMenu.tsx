@@ -25,23 +25,25 @@ export default function UserDropdownMenu({ currentUser }: any) {
       </button>
 
       {openMenu && (
-        <FadeIn className='visible absolute right-0  my-4  list-none divide-y divide-gray-100 rounded-lg bg-white  text-base shadow'>
-          <div className=' px-4 py-3'>
-            <span className='block text-sm text-gray-900 '>
-              {currentUser.name}
-            </span>
-            <span className='block truncate  text-sm text-gray-500 '>
-              {currentUser.email}
-            </span>
-          </div>
-          <ul className='py-2' aria-labelledby='user-menu-button'>
-            <button
-              onClick={() => signOut({ callbackUrl: '/' })}
-              className=' w-full px-4 py-2 text-left text-sm text-gray-700  hover:bg-gray-200'>
-              Sign out
-            </button>
-          </ul>
-        </FadeIn>
+        <div onMouseLeave={() => setOpenMenu(false)}>
+          <FadeIn className='visible absolute right-0  my-4  list-none divide-y divide-gray-100 rounded-lg bg-white  text-base shadow'>
+            <div className=' px-4 py-3'>
+              <span className='block text-sm text-gray-900 '>
+                {currentUser.name}
+              </span>
+              <span className='block truncate  text-sm text-gray-500 '>
+                {currentUser.email}
+              </span>
+            </div>
+            <ul className='py-2' aria-labelledby='user-menu-button'>
+              <button
+                onClick={() => signOut({ callbackUrl: '/' })}
+                className=' w-full px-4 py-2 text-left text-sm text-gray-700  hover:bg-gray-200'>
+                Sign out
+              </button>
+            </ul>
+          </FadeIn>
+        </div>
       )}
     </div>
   )

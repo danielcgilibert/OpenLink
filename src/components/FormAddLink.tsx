@@ -10,6 +10,7 @@ import { Input } from '@/ui/Input'
 import { cn } from '@/libs/cn'
 import { validUrl } from '@/libs/validUrl'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { OpenEffect } from '@/animations/OpenEffect'
 
 interface FormAddLinkProps {
   setIsEditing: (isEditing: boolean) => void
@@ -56,71 +57,73 @@ export default function FormAddLink({
   }, [inputUrl])
 
   return (
-    <div
-      className={cn(
-        showForm && ' bg-white p-5 shadow',
-        `w-full  rounded-2xl `
-      )}>
-      <header>
-        {showForm ? (
-          <div className='flex items-center justify-between border-b py-3'>
-            <h1 className='flex items-center gap-1 text-base text-gray-800'>
-              <FormIcon className='h-6 w-6' />
-              Enter URL
-            </h1>
-            <button
-              onClick={() => {
-                setShowForm(!showForm)
-                setIsEditing(false)
-                setInputUrl('')
-              }}>
-              <CloseIcon className='h-6 w-6 rounded-full bg-gray-300 p-[5px] ' />
-            </button>
-          </div>
-        ) : (
-          <button
-            onClick={() => {
-              setShowForm(!showForm)
-              setIsEditing(true)
-            }}
-            className='w-full rounded-full bg-[#7D5A84]  py-2 text-white'>
-            + Add Link
-          </button>
-        )}
-      </header>
-
-      {showForm && (
-        <SizeTransition open={showForm}>
-          <form name='linkForm' onSubmit={handleSubmit} className='flex '>
-            <div className=' w-full space-y-2'>
-              <label
-                htmlFor='url'
-                className='flex items-center  gap-1 text-xs font-medium text-gray-500 opacity-0'>
-                <LinkIcon /> URL
-              </label>
-
-              <div className='flex gap-2'>
-                <Input
-                  name='url'
-                  type='text'
-                  required
-                  onChange={(e) => setInputUrl(e.target.value)}
-                  value={inputUrl}
-                  placeholder='https://example.com'
-                />
-
+    <>
+      {!showForm && (
+        <button
+          onClick={() => {
+            setShowForm(!showForm)
+            setIsEditing(true)
+          }}
+          className='w-full rounded-full bg-[#7D5A84] py-2  text-white transition-colors hover:bg-[#65486a]'>
+          + Add Link
+        </button>
+      )}
+      <OpenEffect open={showForm}>
+        <div
+          className={cn(
+            showForm && ' bg-white p-5 shadow',
+            ` h-full w-full  rounded-2xl `
+          )}>
+          <header>
+            {showForm && (
+              <div className='flex items-center justify-between border-b py-3'>
+                <h1 className='flex items-center gap-1 font-semibold  text-gray-800'>
+                  Enter URL
+                </h1>
                 <button
-                  className={cn(
-                    !isValidUrl && 'pointer-events-none bg-opacity-10 ',
-                    `duration-200' rounded-xl bg-[#7D5A84] px-6 text-white opacity-100 transition-all`
-                  )}>
-                  Add
+                  onClick={() => {
+                    setShowForm(!showForm)
+                    setIsEditing(false)
+                    setInputUrl('')
+                  }}>
+                  <CloseIcon className='h-6 w-6 rounded-full bg-gray-300 p-[5px] transition-colors hover:bg-gray-400 ' />
                 </button>
               </div>
-            </div>
-          </form>
-        </SizeTransition>
-      )}
-    </div>
+            )}
+          </header>
+
+          {showForm && (
+            <form name='linkForm' onSubmit={handleSubmit} className='flex '>
+              <div className=' w-full space-y-2'>
+                <label
+                  htmlFor='url'
+                  className='flex items-center  gap-1 text-xs font-medium text-gray-500 opacity-0'>
+                  <LinkIcon /> URL
+                </label>
+
+                <div className='flex gap-2'>
+                  <Input
+                    name='url'
+                    type='text'
+                    required
+                    onChange={(e) => setInputUrl(e.target.value)}
+                    value={inputUrl}
+                    placeholder='https://example.com'
+                  />
+
+                  <button
+                    className={cn(
+                      !isValidUrl && 'pointer-events-none bg-opacity-10 ',
+                      `duration-200' rounded-lg  bg-[#7D5A84] px-6 text-white opacity-100 transition-all`
+                    )}>
+                    Add
+                  </button>
+                </div>
+              </div>
+            </form>
+          )}
+        </div>
+      </OpenEffect>
+    </>
   )
 }

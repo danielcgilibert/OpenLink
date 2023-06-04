@@ -4,6 +4,8 @@
 <img src="public/project.png" alt="Screenshot" />
 </a>
 
+> 🚧 This project is under development 🚧
+
 </div>
 
 ## ⚙️ Stack

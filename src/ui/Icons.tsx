@@ -91,6 +91,49 @@ export const DragIcon: React.FC<ComponentProps<'svg'>> = (props) => {
   )
 }
 
+export const ShareIcon: React.FC<ComponentProps<'svg'>> = (props) => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      {...props}
+      width={SIZE}
+      height={SIZE}
+      viewBox='0 0 24 24'
+      strokeWidth='1'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+      <path d='M8 9h-1a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-8a2 2 0 0 0 -2 -2h-1'></path>
+      <path d='M12 14v-11'></path>
+      <path d='M9 6l3 -3l3 3'></path>
+    </svg>
+  )
+}
+
+export const PhotoIcon: React.FC<ComponentProps<'svg'>> = (props) => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      {...props}
+      width={SIZE}
+      height={SIZE}
+      viewBox='0 0 24 24'
+      strokeWidth='1'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+      <path d='M15 8h.01'></path>
+      <path d='M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z'></path>
+      <path d='M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5'></path>
+      <path d='M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3'></path>
+    </svg>
+  )
+}
+
 export const TrashIcon: React.FC<ComponentProps<'svg'>> = (props) => {
   return (
     <svg
@@ -99,16 +142,17 @@ export const TrashIcon: React.FC<ComponentProps<'svg'>> = (props) => {
       width={SIZE}
       height={SIZE}
       viewBox='0 0 24 24'
-      strokeWidth='1.2'
+      strokeWidth='1'
       stroke='currentColor'
       fill='none'
       strokeLinecap='round'
       strokeLinejoin='round'>
       <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
-      <path d='M4 7h16'></path>
+      <path d='M4 7l16 0'></path>
+      <path d='M10 11l0 6'></path>
+      <path d='M14 11l0 6'></path>
       <path d='M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12'></path>
       <path d='M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3'></path>
-      <path d='M10 12l4 4m0 -4l-4 4'></path>
     </svg>
   )
 }

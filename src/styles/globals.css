@@ -15,16 +15,16 @@
   }
   50% {
     transform: rotate(180deg);
-    transform: translate(-20%, 0%);
+    transform: translate(-30%, 50%);
   }
   100% {
     transform: rotate(360deg);
-    transform: translate(-30%, 0%);
+    transform: translate(-50%, 50%);
   }
 }
 
 .gradient {
-  --size: 250px;
+  --size: 350px;
   --speed: 10s;
   --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
 

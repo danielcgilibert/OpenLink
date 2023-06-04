@@ -1,6 +1,7 @@
 import { getLinks } from '@/server/services/getLinks'
 import { getPublicBio } from '@/server/services/getPublicBio'
 import { Link } from '@prisma/client'
+import { redirect } from 'next/navigation'
 
 export default async function Page({
   params
@@ -10,8 +11,11 @@ export default async function Page({
   const { username } = params
 
   const bio = await getPublicBio(username)
-  const links = await getLinks(bio?.id as number)
 
+  if (!bio) {
+    return redirect('/user-not-found')
+  }
+  const links = await getLinks(bio?.id as number)
   return (
     <main className='mx-auto flex   h-screen max-w-4xl flex-col  gap-12 bg-neutral-100 p-5 text-black  shadow-xl md:px-44'>
       <header className='flex flex-col items-center justify-center gap-3   border-b-2 border-zinc-800  p-5'>

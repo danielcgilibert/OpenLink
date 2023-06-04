@@ -12,7 +12,6 @@ export default function MovilPreview({ username }: { username: string }) {
     }
   })
 
-  //! quit refetchInterval
   const { data: links, isLoading } = useQuery({
     queryKey: ['links'],
     queryFn: () => {

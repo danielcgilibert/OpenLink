@@ -40,7 +40,7 @@ export default function MovilHome() {
       onMouseLeave={handleMouseLeave}
       className={cn(
         themes[selectTheme],
-        `relative flex h-[530px] w-[290px] flex-col justify-start  rounded-3xl border-8  border-zinc-800  p-8  text-black shadow-xl shadow-stone-800 transition-transform`
+        `relative mb-12 flex h-[530px] w-[290px] flex-col  justify-start rounded-3xl  border-8  border-zinc-800  p-8 text-black shadow-xl shadow-stone-800 transition-transform`
       )}>
       <div className='absolute right-full top-32 h-6 w-[14px] rounded-l-[4px]  bg-zinc-800'></div>
       <div className='absolute right-full top-[72px] h-9 w-[14px] rounded-l-[4px]  bg-zinc-800'></div>
@@ -75,7 +75,7 @@ export default function MovilHome() {
         </div>
       </section>
 
-      <div className='absolute right-[30%] top-[92%]  flex w-full flex-col items-center justify-center gap-2 rounded-full  border-[6px] border-zinc-800 bg-white py-5'>
+      <div className='absolute left-0 top-[89%]  flex w-full  flex-col items-center justify-center gap-2 rounded-full border-[6px] border-zinc-800  bg-white py-5 md:left-auto  md:right-[30%] md:top-[92%]'>
         <span className='text-center text-sm text-zinc-600'>
           Choose your style
         </span>

@@ -104,7 +104,6 @@ export async function PUT(request: Request) {
     }
   }
 
-
   const link = await prisma.link.update({
     where: {
       id: id

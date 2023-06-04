@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import { Rubik } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
+import { Notify } from '@/ui/Notify'
 const roboto = Rubik({
   weight: ['400', '600', '700'],
   style: ['normal', 'italic'],
@@ -25,15 +26,7 @@ export default async function RootLayout({
       <QueryProvider>
         <body
           className={`relative h-screen w-full  bg-[#F8F8FF]   ${roboto.className}`}>
-          <Toaster
-            position='top-center'
-            reverseOrder={false}
-            toastOptions={{
-              style: {
-                padding: '8px 48px'
-              }
-            }}
-          />
+          <Notify />
           <main className='mx-auto h-full max-w-5xl'>{children}</main>
         </body>
       </QueryProvider>

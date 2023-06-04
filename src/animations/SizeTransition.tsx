@@ -7,6 +7,7 @@ import {
   animated,
   useSpringRef
 } from '@react-spring/web'
+import { useEffect } from 'react'
 
 export const SizeTransition = (props: any) => {
   const springApi = useSpringRef()

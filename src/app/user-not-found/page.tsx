@@ -12,7 +12,7 @@ export default async function Home() {
         <h2 className='text-lg'>Want this to be your username?</h2>
 
         <Link className='rounded-full bg-white px-8 py-4 underline' href='/'>
-          Create your Linktree now.
+          Create your account now.
         </Link>
       </div>
 

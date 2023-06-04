@@ -2,6 +2,9 @@ import { prisma } from '@/server/db'
 import { Link } from '@prisma/client'
 
 export async function getLinks(bioId: number) {
+  if (!bioId) {
+    return null
+  }
   try {
     const links: Link[] = await prisma.link.findMany({
       where: {

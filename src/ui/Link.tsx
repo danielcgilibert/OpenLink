@@ -7,7 +7,7 @@ interface LinkProps {
   children: React.ReactNode
 }
 
-const defaultStyles = 'rounded px-2 py-1 hover:bg-gray-100'
+const defaultStyles = 'text-violet-700 '
 
 const Link = (props: LinkProps) => {
   return (

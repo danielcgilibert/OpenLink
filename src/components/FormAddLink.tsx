@@ -115,7 +115,7 @@ export default function FormAddLink({
                   <button
                     className={cn(
                       !isValidUrl && 'pointer-events-none bg-opacity-10 ',
-                      `duration-200' rounded-lg  bg-[#7D5A84] px-6 text-white opacity-100 transition-all`
+                      `duration-200' rounded-lg  bg-[#8E56C7] px-6 text-white opacity-100 transition-all`
                     )}>
                     Add
                   </button>

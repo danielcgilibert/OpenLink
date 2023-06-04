@@ -32,10 +32,11 @@ export default function FormAddLink({
         return [...oldData, data]
       })
       queryClient.invalidateQueries({ queryKey: ['links'] })
-
+      toast.dismiss()
       toast.success('Link created')
     },
     onError: () => {
+      toast.dismiss()
       toast.error('Error creating link')
     }
   })
@@ -43,6 +44,7 @@ export default function FormAddLink({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     mutation.mutate(inputUrl)
+    toast.loading('Creating link')
     setShowForm(false)
     setIsEditing(false)
     setInputUrl('')

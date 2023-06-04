@@ -17,6 +17,7 @@ export default function LinkCard({ link }: { link: Link }) {
         queryClient.invalidateQueries({ queryKey: ['links'] })
         return oldData.filter((link: Link) => link.id !== data.id)
       })
+      toast.dismiss()
       toast.success('Link deleted')
     }
   })
@@ -45,12 +46,13 @@ export default function LinkCard({ link }: { link: Link }) {
 
         <div className='flex items-baseline justify-between gap-2 pt-2'>
           <div className='flex gap-2'>
-            <ShareIcon className='h-5 w-5' />
-            <PhotoIcon className='h-5 w-5' />
+            <ShareIcon className='h-5 w-5 opacity-40' />
+            <PhotoIcon className='h-5 w-5 opacity-40' />
             <button
               className='flex items-center justify-center'
               onClick={() => {
                 mutation.mutate(link.id)
+                toast.loading('Deleting link')
               }}>
               <TrashIcon className='h-5 w-5' />
             </button>

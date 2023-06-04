@@ -1,8 +1,6 @@
 <div align="center">
 
-<a href="https://www.pheralb.dev/" target="_blank">
 <img src="public/project.png" alt="Screenshot" />
-</a>
 
 > 🚧 This project is under development 🚧
 

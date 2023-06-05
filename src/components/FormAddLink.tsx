@@ -27,10 +27,12 @@ export default function FormAddLink({
   const mutation = useMutation({
     mutationFn: postLink,
     onSuccess: (data) => {
-      queryClient.setQueryData(['link'], (oldData: any) => {
+      queryClient.setQueryData(['links'], (oldData: any) => {
+        console.log(oldData)
+
         return [...oldData, data]
       })
-      queryClient.invalidateQueries({ queryKey: ['links'] })
+      queryClient.invalidateQueries({ queryKey: ['movilPreviewLinks'] })
       toast.dismiss()
       toast.success('Link created')
     },

@@ -24,8 +24,9 @@ export default async function Page({
   if (!bio) {
     return redirect('/user-not-found')
   }
-  const links = await getLinks(bio?.id as number)
-  const filterLinks = links?.filter((link: Link) => link.show)
+
+  const links = await getLinks(bio?.id as number) // get links in server side
+  const filterLinks = links?.filter((link: Link) => link.show) // filter links in server side
   return (
     <>
       <main className=' mx-auto flex h-screen   max-w-4xl flex-col gap-6  p-5  text-black    md:px-44'>
@@ -56,7 +57,7 @@ export default async function Page({
         </section>
       </main>
 
-      <div className='backdrop-blur-5xl absolute left-0 right-0 top-0  -z-10 h-screen w-full  '></div>
+      <div className='backdrop-blur-5xl absolute left-0 right-0 top-0 -z-10 h-screen w-full'></div>
       <div className='gradient'></div>
     </>
   )

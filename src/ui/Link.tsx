@@ -23,8 +23,8 @@ const ExternalLink = (props: LinkProps) => {
       href={props.href}
       rel='noreferrer'
       target='_blank'
-      className={cn(defaultStyles, props.className)}>
-      <div className='flex items-center'>{props.children}</div>
+      className={cn(props.className)}>
+      {props.children}
     </a>
   )
 }

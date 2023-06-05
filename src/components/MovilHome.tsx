@@ -48,7 +48,7 @@ export default function MovilHome() {
         <img
           referrerPolicy='no-referrer'
           className='w-20 rounded-full border-2 border-gray-300'
-          src='090036.jpg'
+          src='profile.webp'
           alt='avatar'
         />
         <div className='flex flex-col text-center'>

@@ -1,5 +1,6 @@
 'use client'
 
+import useCheck from '@/hooks/useCheck'
 import { Switch } from '@headlessui/react'
 import { Link } from '@prisma/client'
 import { useEffect, useRef, useState } from 'react'
@@ -7,25 +8,16 @@ import { useEffect, useRef, useState } from 'react'
 export default function Toggle({ show, link }: { link: Link; show: boolean }) {
   const [enabled, setEnabled] = useState(show)
   const isFirst = useRef(true)
+  const mutation = useCheck(link, enabled)
 
   useEffect(() => {
     if (isFirst.current) {
       isFirst.current = false
       return
     }
-
-    handleChange()
+    mutation.mutate()
   }, [enabled])
 
-  const handleChange = () => {
-    fetch('/api/link/check', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ ...link, show: enabled })
-    })
-  }
   return (
     <>
       <Switch

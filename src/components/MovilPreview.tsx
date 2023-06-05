@@ -3,6 +3,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link } from '@prisma/client'
 import { Spinner } from '@/ui/Spinner'
+import { cn } from '@/libs/cn'
+import { useLinks } from '@/hooks/useLinks'
 
 export default function MovilPreview({ username }: { username: string }) {
   const { data: bioData } = useQuery({
@@ -12,17 +14,12 @@ export default function MovilPreview({ username }: { username: string }) {
     }
   })
 
-  const { data: links, isLoading } = useQuery({
-    queryKey: ['links'],
-    queryFn: () => {
-      return fetch(`/api/link`).then((res) => res.json())
-    }
-  })
+  const query = useLinks('movilPreviewLinks')
 
   return (
     <section>
       <div className='relative  left-0 right-0 top-0 ml-auto hidden h-[754px] w-[352px] overflow-auto rounded-[3rem] border-[10px] border-zinc-800 bg-white md:block '>
-        {isLoading ? (
+        {query.isLoading ? (
           <div className='flex min-h-full items-center justify-center'>
             <Spinner />
           </div>
@@ -42,22 +39,19 @@ export default function MovilPreview({ username }: { username: string }) {
               </div>
             </header>
             <section className='flex flex-col   gap-5 p-5 text-center  '>
-              {links.data?.map((link: Link) => (
+              {query.data?.map((link: Link) => (
                 <div
                   key={link.id}
-                  className='rounded bg-zinc-800 p-5    text-white '>
+                  className={cn(
+                    !link.show && 'opacity-50',
+                    'rounded bg-zinc-800 p-5 text-white transition-opacity '
+                  )}>
                   {link.title}
                 </div>
               ))}
             </section>
           </>
         )}
-
-        {/* <iframe
-            src={`/${username}`}
-            className="absolute  h-full  w-full  rounded-[3rem] "
-          /> */}
-        {/* */}
       </div>
     </section>
   )

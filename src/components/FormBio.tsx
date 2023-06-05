@@ -9,10 +9,11 @@ import { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-hot-toast'
 
 export default function FormBio() {
-  const [usernameInput, setUsernameInput] = useState<string>('')
+  const [usernameInput, setUsernameInput] = useState('')
   const [isValidUser, setisValidUser] = useState(false)
   const isFirtsInput = useRef(false)
   const router = useRouter()
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const response = await postBio(usernameInput.toLowerCase())

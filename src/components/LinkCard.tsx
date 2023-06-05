@@ -17,9 +17,9 @@ export default function LinkCard({ link }: { link: Link }) {
   const mutation = useMutation({
     mutationFn: deleteLink,
     onSuccess: ({ data }) => {
-      queryClient.setQueryData(['link'], (oldData: any) => {
+      queryClient.setQueryData(['link'], (oldData: Link[] | undefined) => {
         queryClient.invalidateQueries({ queryKey: ['links'] })
-        return oldData.filter((link: Link) => link.id !== data.id)
+        return oldData?.filter((link: Link) => link.id !== data.id)
       })
       toast.dismiss()
       toast.success('Link deleted')

@@ -38,7 +38,7 @@ export default async function Page({
           />
 
           <div>
-            <h1 className='text-2xl'>{bio?.name}</h1>
+            <h1 className='text-2xl'>{bio?.username}</h1>
             <p className='hidden md:text-sm'>{bio?.description}</p>
           </div>
         </header>

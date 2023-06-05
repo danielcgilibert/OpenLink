@@ -25,6 +25,7 @@ export default async function Page({
     return redirect('/user-not-found')
   }
   const links = await getLinks(bio?.id as number)
+  const filterLinks = links?.filter((link: Link) => link.show)
   return (
     <>
       <main className=' mx-auto flex h-screen   max-w-4xl flex-col gap-6  p-5  text-black    md:px-44'>
@@ -43,7 +44,7 @@ export default async function Page({
 
         <section className='flex flex-col gap-5 text-center'>
           <section className='flex flex-col gap-5 text-center '>
-            {links?.map((link: Link) => (
+            {filterLinks?.map((link: Link) => (
               <ExternalLink
                 key={link.id}
                 href={link.url}

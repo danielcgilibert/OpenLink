@@ -1,21 +1,26 @@
 import { getBio } from '@/server/services/getBio'
-import { getLinks } from '@/server/services/getLinks'
-import FormAddLink from '@/components/FormAddLink'
-import { redirect } from 'next/navigation'
-import ListLinks from '@/components/ListLinks'
 
 export default async function Dashboard() {
   const bio = await getBio()
 
-  if (!bio) {
-    redirect('/create-bio')
-  }
-
-  const links = await getLinks(bio.id)
-
   return (
     <>
-      <div className='mt-5  grid place-content-center '>IN DEVELOPMENT</div>
+      <div className='flex flex-col gap-5'>
+        <section className='rounded-lg bg-white p-6 shadow'>
+          <header className='flex items-center justify-start gap-2'>
+            <img
+              className='h-24 w-24 rounded-full  border-[2px]'
+              src={bio?.avatar}
+              referrerPolicy='no-referrer'
+              alt='avatar'
+            />
+            <h1 className='text-xl'>{bio?.username}</h1>
+          </header>
+        </section>
+        <div className='h-full rounded-lg bg-white p-6 shadow'>
+          Change Theme
+        </div>
+      </div>
     </>
   )
 }

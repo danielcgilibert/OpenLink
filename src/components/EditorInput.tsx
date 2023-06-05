@@ -20,8 +20,9 @@ export default function EditorInput({
   const [isEditing, setIsEditing] = useState(false)
   const [inputValue, setInputValue] = useState(text)
   const input = useRef<HTMLInputElement | null>(null)
-  const debonuceValue = useDebounce(input.current?.value, 300)
+  const debonuceValue = useDebounce(input.current?.value, 400)
   const queryClient = useQueryClient()
+  const firstInput = useRef(text)
 
   const mutation = useMutation({
     mutationFn: updateLink,
@@ -31,13 +32,16 @@ export default function EditorInput({
   })
 
   const onQueryChanged = () => {
-    mutation.mutate({ id, debonuceValue, type })
+    mutation.mutate({ id, inputValue, type })
   }
 
   useEffect(() => {
     if (!isEditing) return
-    onQueryChanged()
-  }, [debonuceValue, isEditing])
+    if (firstInput.current !== inputValue) {
+      onQueryChanged()
+      firstInput.current = inputValue
+    }
+  }, [debonuceValue])
 
   return (
     <button
@@ -64,7 +68,14 @@ export default function EditorInput({
         aria-label='Edit link title'
         autoFocus
         ref={input}
-        onBlur={() => setIsEditing(false)}
+        onBlur={() => {
+          if (firstInput.current !== inputValue) {
+            onQueryChanged()
+            firstInput.current = inputValue
+          }
+
+          setIsEditing(false)
+        }}
       />
 
       <div

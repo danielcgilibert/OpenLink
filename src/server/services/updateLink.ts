@@ -1,11 +1,9 @@
 export async function updateLink(data: {
   id: number
-  debonuceValue: string
+  inputValue: string
   type: 'url' | 'text'
 }) {
-  const { id, debonuceValue, type } = data
-
-  console.log('updateLink', id, debonuceValue, type)
+  const { id, inputValue, type } = data
 
   fetch('/api/link', {
     method: 'PUT',
@@ -14,7 +12,7 @@ export async function updateLink(data: {
     },
     body: JSON.stringify({
       id,
-      input: debonuceValue,
+      input: inputValue,
       type
     })
   })

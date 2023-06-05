@@ -17,6 +17,11 @@ const useCheck = (link: Link, enabled: boolean) => {
       })
     },
     onSuccess: () => {
+      queryClient.setQueryData(['links'], (oldData: any) => {
+        if (!oldData) return []
+        oldData.find((l: Link) => l!.id === link!.id).show = enabled
+        return oldData
+      })
       queryClient.invalidateQueries({ queryKey: ['movilPreviewLinks'] })
     },
     onError: () => {

@@ -44,7 +44,7 @@ export default async function Page({
           </div>
         </header>
 
-        <section className='flex flex-col gap-5 text-center'>
+        <section className='flex flex-col gap-5 pb-8 text-center'>
           <section className='flex flex-col gap-5 text-center '>
             {filterLinks?.map((link: Link) => (
               <ExternalLink

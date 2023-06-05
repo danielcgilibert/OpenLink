@@ -15,7 +15,7 @@ export default function ListLinks({
   return (
     <div className=' flex flex-col   gap-5'>
       {query.isLoading || query.isFetching ? (
-        <Spinner className='absolute  left-[50%] top-[15%] h-8 w-8 animate-spin fill-[#7D5A84] text-light' />
+        <Spinner className='mx-auto  h-8 w-8 animate-spin fill-[#7D5A84] text-light' />
       ) : (
         query.data?.map((link: Link, index: number) => (
           <FadeIn key={link.id} delay={120 * index}>

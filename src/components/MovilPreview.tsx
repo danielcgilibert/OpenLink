@@ -30,7 +30,7 @@ export default function MovilPreview({ username }: { username: string }) {
 
   return (
     <section>
-      <div className='sticky left-0 right-0 top-36 ml-auto hidden h-[754px] w-[352px] overflow-auto rounded-[3rem] border-[10px] border-zinc-800 bg-white md:block '>
+      <div className='sticky left-0 right-0 top-36 ml-auto hidden h-[754px] w-[352px] overflow-auto rounded-[3rem] border-[10px] border-zinc-800 bg-white  md:block '>
         {isFetching ? (
           <div className='flex min-h-full items-center justify-center'>
             <Spinner />

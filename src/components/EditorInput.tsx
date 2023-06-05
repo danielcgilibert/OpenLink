@@ -26,7 +26,7 @@ export default function EditorInput({
   const mutation = useMutation({
     mutationFn: updateLink,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['links'] })
+      queryClient.invalidateQueries({ queryKey: ['movilPreviewLinks'] })
     }
   })
 

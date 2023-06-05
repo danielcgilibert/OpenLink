@@ -34,6 +34,7 @@ export default async function Page({
           <img
             className='h-24 w-24 rounded-full  border-[2px]'
             src={bio?.avatar}
+            referrerPolicy='no-referrer'
             alt='avatar'
           />
 

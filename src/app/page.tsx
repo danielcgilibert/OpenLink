@@ -1,9 +1,13 @@
 import { EyeIcon } from '@/ui/Icons'
-import Button from '@/components/LoginButton'
+import { LoginGoogle } from '@/components/LoginButton'
 import MovilHome from '@/components/MovilHome'
 import { AnimateText } from '@/animations/AnimationText'
+import { getCurrentUser } from '@/server/services/getUser'
+import { Link } from '@/ui/Link'
 
 export default async function Home() {
+  const currentUser = await getCurrentUser()
+
   return (
     <>
       <div className='grid h-full  place-content-start gap-16  p-8 text-white md:grid-cols-2 md:place-content-center md:justify-center'>
@@ -20,11 +24,28 @@ export default async function Home() {
               </div>
 
               <div className='flex flex-1 flex-col gap-5 md:flex-row'>
-                <Button>try for free</Button>
-                <button className=' flex w-full items-center justify-center gap-2 rounded-full border-2  border-black border-opacity-80 py-4 uppercase text-black shadow-lg '>
-                  <EyeIcon className='h-6 w-6' />
-                  Watch example
-                </button>
+                {!currentUser ? (
+                  <>
+                    <LoginGoogle>try for free</LoginGoogle>
+
+                    <button className=' flex w-full items-center justify-center gap-2 rounded-full border-2  border-black border-opacity-80 py-4 uppercase text-black shadow-lg '>
+                      <EyeIcon className='h-6 w-6' />
+                      Watch example
+                    </button>
+                  </>
+                ) : (
+                  <div className='flex w-full'>
+                    <h1 className='w-1/2 text-xl text-black'>
+                      Welcome back <br />
+                      <span className='border-b-2 '>{currentUser!.name}</span>
+                    </h1>
+                    <Link
+                      className='w-1/2 rounded-full bg-primary py-4 text-center uppercase text-white shadow-lg '
+                      href='/dashboard'>
+                      Dashboard
+                    </Link>
+                  </div>
+                )}
               </div>
             </AnimateText>
           </div>

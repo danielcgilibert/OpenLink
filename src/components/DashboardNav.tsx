@@ -5,7 +5,7 @@ import { User } from 'next-auth'
 import { Link } from '@/ui/Link'
 import UserDropdownMenu from './UserDropdownMenu'
 import { HomeIcon, ThemeIcon } from '@/ui/Icons'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/libs/cn'
 
 // Dashboard Routes

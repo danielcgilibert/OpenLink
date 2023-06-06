@@ -20,7 +20,7 @@ export default function EditorInput({
   const [isEditing, setIsEditing] = useState(false)
   const [inputValue, setInputValue] = useState(text)
   const input = useRef<HTMLInputElement | null>(null)
-  const debonuceValue = useDebounce(input.current?.value, 400)
+  const debonuceValue = useDebounce(input.current?.value, 200)
   const queryClient = useQueryClient()
   const firstInput = useRef(text)
 

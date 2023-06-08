@@ -29,7 +29,7 @@ export default async function Page({
   const filterLinks = links?.filter((link: Link) => link.show) // filter links in server side
   return (
     <>
-      <main className=' mx-auto flex h-screen   max-w-4xl flex-col gap-6  p-5  text-black    md:px-44'>
+      <main className=' mx-auto flex max-w-4xl flex-col gap-6  p-5  text-black    md:px-44'>
         <header className='flex flex-col items-center justify-center gap-3   border-b-2 border-zinc-800  p-5'>
           <img
             className='h-24 w-24 rounded-full  border-[2px]'
@@ -58,8 +58,8 @@ export default async function Page({
         </section>
       </main>
 
-      <div className='backdrop-blur-5xl absolute left-0 right-0 top-0 -z-10 h-screen w-full'></div>
-      <div className='gradient'></div>
+      {/* <div className='backdrop-blur-5xl absolute left-0 right-0 top-0 -z-10 h-screen w-full overflow-hidden'></div> */}
+      <div className='gradient ' />
     </>
   )
 }

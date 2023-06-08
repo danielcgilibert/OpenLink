@@ -24,7 +24,7 @@
 }
 
 .gradient {
-  --size: 350px;
+  --size: 300px;
   --speed: 10s;
   --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
 

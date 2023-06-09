@@ -1,11 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './neon.css';
 
 :root {
   --primary: #2c2c2c;
   --secondary: #666666;
   --light: #bdbdbd;
+}
+
+@layer base {
+  html[data-theme='neon'] {
+    --primary: black;
+    --secondary: rgb(255, 46, 119);
+    --light: #bdbdbd;
+    background-color: red;
+  }
 }
 
 @keyframes rotate {

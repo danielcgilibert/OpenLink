@@ -1,3 +1,4 @@
+import ChangeTheme from '@/components/ChangeTheme'
 import { getBio } from '@/server/services/getBio'
 
 export default async function Dashboard() {
@@ -19,6 +20,7 @@ export default async function Dashboard() {
         </section>
         <div className='h-full rounded-lg bg-white p-6 shadow'>
           Change Theme
+          <ChangeTheme />
         </div>
       </div>
     </>

@@ -21,7 +21,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <QueryProvider>
         <body
           className={`relative h-screen w-full  bg-[#F8F8FF]   ${rubik.className}`}>

@@ -55,7 +55,7 @@ export default async function Home() {
         </section>
       </div>
 
-      {/* <div className='gradient'></div> */}
+      <div className='gradient'></div>
     </>
   )
 }

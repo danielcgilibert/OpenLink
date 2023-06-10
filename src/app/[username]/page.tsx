@@ -59,7 +59,7 @@ export default async function Page({
       </main>
 
       {/* <div className='backdrop-blur-5xl absolute left-0 right-0 top-0 -z-10 h-screen w-full overflow-hidden'></div> */}
-      <div className='gradient ' />
+      {/* <div className='gradient ' /> */}
     </>
   )
 }

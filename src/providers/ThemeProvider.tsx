@@ -28,7 +28,7 @@ export default function ThProvider({ children }: React.PropsWithChildren) {
       'preview-iframe'
     ) as HTMLIFrameElement
 
-    if (iFrame) {
+    if (iFrame && !isFetching) {
       //@ts-ignore
       iFrame.contentWindow.document.querySelector('#userBio').className =
         themesList[theme]

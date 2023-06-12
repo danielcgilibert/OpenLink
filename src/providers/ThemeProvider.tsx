@@ -30,8 +30,11 @@ export default function ThProvider({ children }: React.PropsWithChildren) {
 
     if (iFrame && !isFetching) {
       //@ts-ignore
-      iFrame.contentWindow.document.querySelector('#userBio').className =
-        themesList[theme]
+      if (iFrame.contentWindow.document.querySelector('#userBio') !== null) {
+        //@ts-ignore
+        iFrame.contentWindow.document.querySelector('#userBio').className =
+          themesList[theme]
+      }
     }
   }, [theme])
 

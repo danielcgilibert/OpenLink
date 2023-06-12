@@ -77,6 +77,7 @@ model Bio {
   descriptionShow Boolean @default(true)
   bio      User @relation(fields: [userId], references: [id])
   footerDesc  String
+  theme       String @default("light")
   userId   String @unique
   analytics   Analytics?
   links   Link[]

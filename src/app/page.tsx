@@ -9,7 +9,7 @@ export default async function Home() {
   const currentUser = await getCurrentUser()
 
   return (
-    <>
+    <div className='mx-auto h-full max-w-5xl'>
       <div className='grid h-full  place-content-start gap-16  p-8 text-white md:grid-cols-2 md:place-content-center md:justify-center'>
         <section className='mt-20 grid items-center  text-center md:mt-0  md:text-left '>
           <div className='flex flex-col gap-8'>
@@ -56,6 +56,6 @@ export default async function Home() {
       </div>
 
       <div className='gradient'></div>
-    </>
+    </div>
   )
 }

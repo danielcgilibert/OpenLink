@@ -23,7 +23,7 @@ export default async function DashboardLayout({
   return (
     <>
       <Header currentUser={currentUser} />
-      <div className=' mt-12 grid w-full   rounded-lg px-5 md:grid-cols-[55%_auto]    md:p-0 md:pb-8'>
+      <div className=' mt-12 grid w-full   rounded-lg px-5 md:grid-cols-[55%_auto] md:p-0 md:pb-8'>
         {children}
         <MovilPreview username={bio.username} />
       </div>

@@ -8,5 +8,5 @@ export default async function PrivateLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return <div className='mx-auto h-full max-w-5xl'>{children}</div>
 }

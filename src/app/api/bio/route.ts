@@ -86,3 +86,56 @@ export async function POST(request: Request) {
     { status: 201 }
   )
 }
+
+export async function PUT(request: Request) {
+  const currentUser = await getCurrentUser()
+
+  if (!currentUser) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: ErrorMessage.userNotFound
+      },
+      { status: 401 }
+    )
+  }
+  const { id, theme }: { id: number; theme: string } = await request.json()
+
+  if (!id || !theme) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: ErrorMessage.bioIsRequired
+      },
+      { status: 400 }
+    )
+  }
+
+  //* Create bio
+  await prisma.bio
+    .update({
+      where: {
+        id: id
+      },
+      data: {
+        theme: theme
+      }
+    })
+    .catch((error) => {
+      if (error.code === 'P2002') {
+        return NextResponse.json(
+          {
+            error: ErrorMessage.bioNotFound
+          },
+          { status: 400 }
+        )
+      }
+    })
+
+  return NextResponse.json(
+    {
+      ok: true
+    },
+    { status: 201 }
+  )
+}

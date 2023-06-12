@@ -3,5 +3,5 @@ export default async function UserLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <section>{children}</section>
+  return <>{children}</>
 }

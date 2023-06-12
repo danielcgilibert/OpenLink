@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import { Rubik } from 'next/font/google'
 import Script from 'next/script'
 import { Notify } from '@/ui/Notify'
+import ThProvider from '@/providers/ThemeProvider'
 const rubik = Rubik({
   weight: ['400', '600', '700'],
   style: ['normal', 'italic'],
@@ -21,12 +22,14 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <QueryProvider>
         <body
-          className={`relative h-screen w-full  bg-[#F8F8FF]   ${rubik.className}`}>
-          <Notify />
-          <main className='mx-auto h-full max-w-5xl'>{children}</main>
+          className={`relative h-screen w-full bg-[#F8F8FF] ${rubik.className}`}>
+            <ThProvider>
+              <Notify />
+              <main className='h-full'>{children}</main>
+            </ThProvider>
         </body>
       </QueryProvider>
       <Script

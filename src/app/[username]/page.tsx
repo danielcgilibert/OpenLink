@@ -3,7 +3,10 @@ import { getPublicBio } from '@/server/services/getPublicBio'
 import { ExternalLink } from '@/ui/Link'
 import { Link } from '@prisma/client'
 import { redirect } from 'next/navigation'
-import ChangeTheme from '@/components/ChangeTheme'
+import { titleStyle, mainStyle } from '@/styles/theme.css'
+import { cn } from '@/libs/cn'
+import { IThemes, themes } from '@/styles/themes'
+
 export async function generateMetadata({
   params
 }: {
@@ -27,10 +30,14 @@ export default async function Page({
 
   const links = await getLinks(bio?.id as number) // get links in server side
   const filterLinks = links?.filter((link: Link) => link.show) // filter links in server side
+
   return (
-    <>
-      <ChangeTheme themeId={bio.theme}>
-        <main className='mx-auto flex max-w-4xl flex-col gap-6 p-5   md:px-44'>
+    <div id='userBio' className={themes[bio.theme as keyof IThemes]}>
+      <div className={cn(mainStyle, 'h-screen w-screen')}>
+        <main
+          className={cn(
+            'mx-auto flex h-full max-w-4xl flex-col gap-6 p-5 md:px-44'
+          )}>
           <header className='flex flex-col items-center justify-center gap-3   border-b-2 border-zinc-800  p-5'>
             <img
               className='h-24 w-24 rounded-full  border-[2px]'
@@ -40,28 +47,25 @@ export default async function Page({
             />
 
             <div>
-              <h1 className='text-2xl'>{bio?.username}</h1>
-              <p className='hidden md:text-sm'>{bio?.description}</p>
+              <h1 className={cn('text-2xl', titleStyle)}>{bio?.username}</h1>
+              <p className='hidden  md:text-sm'>{bio?.description}</p>
             </div>
           </header>
 
-          <section className='flex flex-col gap-5 pb-8 text-center'>
+          <section className='flex flex-col gap-5 pb-8 text-center '>
             <section className='card flex flex-col gap-5 text-center '>
               {filterLinks?.map((link: Link) => (
                 <ExternalLink
                   key={link.id}
                   href={link.url}
-                  className='neon:bg-red-600 w-full  rounded-full bg-violet-400  p-3 text-black transition-colors first-letter:uppercase hover:bg-red-500 dark:bg-yellow-300'>
+                  className='w-full  rounded-full bg-violet-500 p-3 text-white antialiased transition-colors  first-letter:uppercase hover:bg-violet-700 hover:text-white'>
                   {link.title}
                 </ExternalLink>
               ))}
             </section>
           </section>
         </main>
-      </ChangeTheme>
-
-      {/* <div className='backdrop-blur-5xl absolute left-0 right-0 top-0 -z-10 h-screen w-full overflow-hidden'></div> */}
-      {/* <div className='gradient ' /> */}
-    </>
+      </div>
+    </div>
   )
 }

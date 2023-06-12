@@ -2,7 +2,7 @@
 
 <img src="public/project.png" alt="Screenshot" />
 
-> 🚧 This project is under development 🚧
+ 🚧 This project is under development 🚧
 
 </div>
 

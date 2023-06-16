@@ -6,7 +6,9 @@
   "author": "@danielcgilibert",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
+    "vercel-build": "prisma generate && next build",
+    "test": "pnpm exec playwright test",
     "start": "next start",
     "lint": "next lint",
     "prettier-check": "prettier --plugin-search-dir . --check . && eslint .",
@@ -43,6 +45,7 @@
     "schema": "prisma/schema.prisma"
   },
   "devDependencies": {
+    "@playwright/test": "^1.35.1",
     "@tanstack/eslint-plugin-query": "^4.29.9",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",

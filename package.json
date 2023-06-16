@@ -6,7 +6,7 @@
   "author": "@danielcgilibert",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "test": "pnpm exec playwright test",
     "start": "next start",
     "lint": "next lint",

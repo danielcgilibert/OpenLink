@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "prisma generate && next build",
     "test": "pnpm exec playwright test",
     "start": "next start",
     "lint": "next lint",

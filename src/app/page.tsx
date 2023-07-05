@@ -28,10 +28,10 @@ export default async function Home() {
                   <>
                     <LoginGoogle>try for free</LoginGoogle>
 
-                    <button className=' flex w-full items-center justify-center gap-2 rounded-full border-2  border-black border-opacity-80 py-4 uppercase text-black shadow-lg '>
+                    <Link href='/openlink' className='flex w-full items-center justify-center gap-2 rounded-full border-2  border-black border-opacity-80 py-4 uppercase text-black shadow-lg '>
                       <EyeIcon className='h-6 w-6' />
                       Watch example
-                    </button>
+                    </Link>
                   </>
                 ) : (
                   <div className='flex w-full'>

@@ -33,7 +33,7 @@ export default async function RootLayout({
         </body>
       </QueryProvider>
       <Script
-        src='https://umami-seven-zeta.vercel.app/script.js'
+        src='https://umami-1-dv62wkj77-danielcgilibert.vercel.app/script.js'
         data-website-id='d9359e0b-9d8e-4cf8-aa6b-033da2f78a36'
       />
     </html>
